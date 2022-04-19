@@ -1,4 +1,4 @@
-//select2
+
 <link href="{{url('backend/dist/style/select2.min.css')}}" rel="stylesheet" />
 <script src="{{url('backend/dist/script/select2.min.js')}}"></script>
 <!-- Font Awesome -->
