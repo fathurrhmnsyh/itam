@@ -18,6 +18,7 @@ class StokController extends Controller
         $stok = Barang_stok::all();
         $kategori = Kategori::all();
         $stok_out = Stok_out::all();
+        $last_stock = DB::table('stok_out')->latest('id')->first();
 
         $ambilDataStok = DB::table('barang_stok')
         ->where('stok', '<=', 2)
@@ -25,10 +26,11 @@ class StokController extends Controller
         if ($request->ajax()) {
             return datatables()->of($ambilDataStok)->make(true);
         }
+        
 
         // dd($ambilDataStok);
         Session::flash('stokAlert');
-        return view('pages.cons_control.stok.stok_data', compact("stok", "kategori", "stok_out", "ambilDataStok"));
+        return view('pages.cons_control.stok.stok_data', compact("stok", "kategori", "stok_out", "ambilDataStok", "last_stock"));
     }
     public function out(Request $request)
     {

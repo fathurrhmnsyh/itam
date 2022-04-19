@@ -63,7 +63,7 @@
             <div class="modal-body">
                 <form method="POST" action="/stok/out">
                     {{ csrf_field() }}
-                    <p align="right" style="font-size: 11px">last numb :</p>
+                    <p align="right" style="font-size: 15px, margin-bottom: -10px">last no trans : <span style="color:red">{{ $last_stock->no_perm}}</span> </p>
                     <div class="form-group">
                         <label>Date</label>
                         <input type="hidden" name="input_by" class="form-control" value="{{auth()->user()->name}}">
@@ -80,7 +80,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>No Permintaan</label>
+                        
+                        <label>No Transaction</label>
                         <input type="text" name="no_perm" class="form-control" placeholder="No transaction">
                     </div>
                     <div class="form-group">
