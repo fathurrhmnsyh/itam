@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('home', function(){
     return view('pages.index');
 });
+//auth
+Route::get('/auth', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/logout', 'AuthController@logout');
 
 //admin role
 Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
@@ -134,12 +138,11 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::post('/userlog/create', 'AuthController@create');
     Route::get('/userlog/delete/{id}', 'AuthController@delete');
 
+    //Eticket
+    Route::get('/eticket', 'EticketController@index');
+
 
 });
-//auth
-Route::get('/auth', 'AuthController@login')->name('login');
-Route::post('/postlogin', 'AuthController@postlogin');
-Route::get('/logout', 'AuthController@logout');
 
 //user role
 Route::group(['middleware' =>['auth', 'ceklevel:user,admin']], function(){

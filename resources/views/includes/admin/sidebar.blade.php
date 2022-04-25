@@ -24,6 +24,41 @@
                 </li>
 
                 <li class="nav-header">E-TIKET</li>
+                <li class="nav-item has-treeview {{request()->is('ekom', 'elapt') ? 'menu-open': ''}}">
+                    <a href="#" class="nav-link {{request()->is('ekom', 'elapt') ? 'active': ''}}">
+                        <i class="nav-icon fas fa-ticket-alt "></i>
+                        <p>
+                            E-Ticket
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="/eticket" class="nav-link {{request()->is('ekom') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('ekom') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link {{request()->is('ekom') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('ekom') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link {{request()->is('elapt') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('elapt') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    User
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-header">IT ASSET</li>
                 
                 <li class="nav-item has-treeview {{request()->is('komputer','komputer/add', 'laptop', 'laptop/add', 'printer', 'user_kom', 'user_laptop') ? 'menu-open' : ''}}">
