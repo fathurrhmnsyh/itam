@@ -17,25 +17,20 @@
         <div class="card-body">
             <div class="col-md-12">
                 <button class="btn btn-primary " data-toggle="modal" data-target="#myModalAdd"><i
-                        class="fa fa-plus"></i> Add
-                    Data</button>
-                <a href="/komputer/print_all" type="button" class="btn btn-success mb-3" target="_blank"><i
-                        class="fa fa-print"></i>
-                    Print Data</a>
+                        class="fa fa-plus"></i> Add Ticket</button>
                 <br><br>
                 <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode FA</th>
-                            <th>Printer Name</th>
-                            <th>Printer Type</th>
-                            <th>Ink Type</th>
-                            <th>Code</th>
-                            <th>Action</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>No Ticket</th>
+                            <th>Problem</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
-                    
+
                 </table>
             </div>
         </div>
@@ -49,3 +44,54 @@
 
 
 @endsection
+
+<div class="modal fade" id="myModalAdd" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Ticket</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" method="post" action="/employee/store">
+                    {{csrf_field()}}
+                    <div class="col-md-3 form-group">
+                        <label for="nik" class="form-label">NIK</label>
+                        <input type="text" name="nik" class="form-control" id="nik" value="{{auth()->user()->nik}}" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" value="{{auth()->user()->name}}" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="name" class="form-label">No Ticket</label>
+                        <input type="text" name="name" class="form-control" id="name" disabled>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="name" class="form-label">Problem</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                    </div>
+                    {{-- <div class="col-md-12 form-group">
+                        <label for="name" class="form-label">Attachment File</label>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    </div> --}}
+                    <div class="col-md-12 form-group">
+                        <br>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Simpan"><br>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

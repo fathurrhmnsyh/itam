@@ -24,8 +24,8 @@
                 </li>
 
                 <li class="nav-header">E-TIKET</li>
-                <li class="nav-item has-treeview {{request()->is('ekom', 'elapt') ? 'menu-open': ''}}">
-                    <a href="#" class="nav-link {{request()->is('ekom', 'elapt') ? 'active': ''}}">
+                <li class="nav-item has-treeview {{request()->is('eticket', 'elapt') ? 'menu-open': ''}}">
+                    <a href="#" class="nav-link {{request()->is('eticket', 'elapt') ? 'active': ''}}">
                         <i class="nav-icon fas fa-ticket-alt "></i>
                         <p>
                             E-Ticket
@@ -34,8 +34,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="/eticket" class="nav-link {{request()->is('ekom') ? 'active': ''}}">
-                                <i class="far fa-circle nav-icon {{request()->is('ekom') ? 'far fa-dot-circle': ''}}"></i>
+                            <a href="/eticket" class="nav-link {{request()->is('eticket') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('eticket') ? 'far fa-dot-circle': ''}}"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -46,14 +46,6 @@
                                 <i class="far fa-circle nav-icon {{request()->is('ekom') ? 'far fa-dot-circle': ''}}"></i>
                                 <p>
                                     Admin
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link {{request()->is('elapt') ? 'active': ''}}">
-                                <i class="far fa-circle nav-icon {{request()->is('elapt') ? 'far fa-dot-circle': ''}}"></i>
-                                <p>
-                                    User
                                 </p>
                             </a>
                         </li>
