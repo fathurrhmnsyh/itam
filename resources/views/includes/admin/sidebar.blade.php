@@ -24,8 +24,8 @@
                 </li>
 
                 <li class="nav-header">E-TIKET</li>
-                <li class="nav-item has-treeview {{request()->is('eticket', 'elapt') ? 'menu-open': ''}}">
-                    <a href="#" class="nav-link {{request()->is('eticket', 'elapt') ? 'active': ''}}">
+                <li class="nav-item has-treeview {{request()->is('eticket', 'eticket/admin') ? 'menu-open': ''}}">
+                    <a href="#" class="nav-link {{request()->is('eticket', 'eticket/admin') ? 'active': ''}}">
                         <i class="nav-icon fas fa-ticket-alt "></i>
                         <p>
                             E-Ticket
@@ -42,8 +42,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link {{request()->is('ekom') ? 'active': ''}}">
-                                <i class="far fa-circle nav-icon {{request()->is('ekom') ? 'far fa-dot-circle': ''}}"></i>
+                            <a href="eticket/admin" class="nav-link {{request()->is('eticket/admin') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('eticket/admin') ? 'far fa-dot-circle': ''}}"></i>
                                 <p>
                                     Admin
                                 </p>

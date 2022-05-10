@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Eticket;
 
 class EticketController extends Controller
@@ -14,7 +15,11 @@ class EticketController extends Controller
      */
     public function index()
     {
-        return view ('pages.eticket.index');
+        $ticket = DB::table('eticket')
+        ->orderBy('id', 'desc')
+        ->get();
+        return view ('pages.eticket.eticket', compact("ticket"));
+        
     }
 
     /**
@@ -22,6 +27,15 @@ class EticketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function admin_index()
+    {
+        $ticket = DB::table('eticket')
+        ->join('user', 'user.id', '=', 'eticket.id_user')
+        ->select('eticket.*', 'user.name')
+        ->orderBy('id', 'desc')
+        ->get();
+        return view ('pages.eticket.eticket_admin', compact("ticket"));
+    }
     public function create()
     {
         //

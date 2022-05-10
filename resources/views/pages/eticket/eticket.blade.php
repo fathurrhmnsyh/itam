@@ -28,8 +28,33 @@
                             <th>No Ticket</th>
                             <th>Problem</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php
+                    $no = 1;
+                    ?>
+                        @foreach($ticket as $t)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$t->date}}</td>
+                            <td>{{$t->time}}</td>
+                            <td>{{$t->ticket_no}}</td>
+                            <td>{{$t->problem}}</td>
+                            <td>
+                                <small class="text-success mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Open
+                                </small>
+                            </td>
+                            <td>
+                                <a href="" class="btn-sm btn-info"><i class="fa fa-bars"></i>
+                                    Detail</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
 
                 </table>
             </div>
@@ -59,11 +84,13 @@
                     {{csrf_field()}}
                     <div class="col-md-3 form-group">
                         <label for="nik" class="form-label">NIK</label>
-                        <input type="text" name="nik" class="form-control" id="nik" value="{{auth()->user()->nik}}" disabled>
+                        <input type="text" name="nik" class="form-control" id="nik" value="{{auth()->user()->nik}}"
+                            disabled>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{auth()->user()->name}}" disabled>
+                        <input type="text" name="name" class="form-control" id="name" value="{{auth()->user()->name}}"
+                            disabled>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="name" class="form-label">No Ticket</label>
