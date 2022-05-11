@@ -80,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="post" action="/employee/store">
+                <form class="row g-3" method="post" action="/eticket/store">
                     {{csrf_field()}}
                     <div class="col-md-3 form-group">
                         <label for="nik" class="form-label">NIK</label>
@@ -89,16 +89,16 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{auth()->user()->name}}"
+                        <input type="text" name="id_user" class="form-control" id="name" value="{{auth()->user()->id}}"
                             disabled>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="name" class="form-label">No Ticket</label>
-                        <input type="text" name="name" class="form-control" id="name" disabled>
+                        <input type="text" name="name" class="form-control" id="no_ticket" disabled>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="name" class="form-label">Problem</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <textarea class="form-control" rows="3" name="problem" placeholder="Enter ..."></textarea>
                     </div>
                     {{-- <div class="col-md-12 form-group">
                         <label for="name" class="form-label">Attachment File</label>

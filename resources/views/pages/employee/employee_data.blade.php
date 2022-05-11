@@ -38,8 +38,7 @@
             <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAdd"><i
                     class="fa fa-plus"></i> Add Data</button>
             <br><br>
-            <table class="table table-hover dataTable table-striped w-full" id="example1" data-plugin="dataTable">
-                <thead>
+            <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">                <thead>
                     <tr>
                         <th>No</th>
                         <th>NIK</th>

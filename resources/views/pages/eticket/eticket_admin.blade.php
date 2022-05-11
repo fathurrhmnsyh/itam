@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box">
-                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-desktop"></i></span>
+                            <span class="info-box-icon bg-info elevation-1"><i class="fa fa-envelope-open"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">OPEN</span>
@@ -35,7 +35,7 @@
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-laptop"></i></span>
+                            <span class="info-box-icon bg-success elevation-1"><i class="fa fa-hourglass-half"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">ON PROCESS</span>
@@ -52,7 +52,7 @@
 
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-print"></i></span>
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-spinner"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">PENDING</span>
@@ -65,7 +65,7 @@
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-tv"></i></span>
+                            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-check"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">SUCCESS</span>

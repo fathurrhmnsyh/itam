@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Eticket;
+use Carbon\Carbon;
+use Auth;
 
 class EticketController extends Controller
 {
@@ -49,7 +51,15 @@ class EticketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('eticket')->insert([
+            'date' => Carbon::now()->format('Y-m-d'),
+            'time' => Carbon::now()->format('Y-m-d H:i:s'),
+            'id_user' => Auth::user()->id,
+            'problem' => $request->problem,
+        ]);
+        
+        
+        return redirect('/eticket');
     }
 
     /**
