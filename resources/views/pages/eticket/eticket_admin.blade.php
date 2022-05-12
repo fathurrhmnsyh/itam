@@ -34,12 +34,15 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-success elevation-1"><i class="fa fa-hourglass-half"></i></span>
+                        <div class="info-box">
+                            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-hourglass-half"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">ON PROCESS</span>
-                                <span class="info-box-number">3 <small>Ticket</small></span>
+                                <span class="info-box-text">On Process</span>
+                                <span class="info-box-number">
+                                    1
+                                    <small>Ticket</small>
+                                </span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -65,7 +68,7 @@
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-check"></i></span>
+                            <span class="info-box-icon bg-success elevation-1"><i class="fa fa-check"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">SUCCESS</span>
@@ -109,7 +112,7 @@
                                 </small>
                             </td>
                             <td>
-                                <a href="" class="btn-sm btn-info"><i class="fa fa-bars"></i>
+                                <a href="/eticket/edit/{{$t->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                     Detail</a>
                             </td>
                         </tr>

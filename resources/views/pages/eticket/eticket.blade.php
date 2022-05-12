@@ -49,7 +49,7 @@
                                 </small>
                             </td>
                             <td>
-                                <a href="" class="btn-sm btn-info"><i class="fa fa-bars"></i>
+                                <a href="/eticket/detailU/{{$t->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                     Detail</a>
                             </td>
                         </tr>

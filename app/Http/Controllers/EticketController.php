@@ -38,6 +38,18 @@ class EticketController extends Controller
         ->get();
         return view ('pages.eticket.eticket_admin', compact("ticket"));
     }
+    public function admin_edit($id)
+    {
+        $eticket = eticket::find($id);
+
+        return view('pages/eticket/eticket_admin_edit', ['eticket'=> $eticket]);
+    }
+    public function user_detail($id)
+    {
+        $eticket = eticket::find($id);
+
+        return view('pages/eticket/eticket_user_detail', ['eticket'=> $eticket]);
+    }
     public function create()
     {
         //
@@ -51,11 +63,23 @@ class EticketController extends Controller
      */
     public function store(Request $request)
     {
+        $unique_ticket = Eticket::orderby('id', 'DESC')->pluck('id')->first();
+        if($unique_ticket == null or $unique_ticket == "" ){
+            #if table is empty
+            $unique_ticket = 1;
+        }
+        else {
+            # If table has already some data
+            $unique_ticket = $unique_ticket + 1;
+        }
         DB::table('eticket')->insert([
             'date' => Carbon::now()->format('Y-m-d'),
             'time' => Carbon::now()->format('Y-m-d H:i:s'),
             'id_user' => Auth::user()->id,
+            'ticket_no' => 'ET'.date('Ym').$unique_ticket,
             'problem' => $request->problem,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         
         
@@ -106,4 +130,5 @@ class EticketController extends Controller
     {
         //
     }
+    
 }

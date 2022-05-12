@@ -142,6 +142,8 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/eticket', 'EticketController@index');
     Route::get('/eticket/admin', 'EticketController@admin_index');
     Route::post('/eticket/store', 'EticketController@store');
+    Route::get('/eticket/edit/{id}', 'EticketController@admin_edit');
+    Route::get('/eticket/detailU/{id}', 'EticketController@user_detail');
 
 
 });
