@@ -49,7 +49,7 @@
                                 <span style="color: #0066FF ">SOLUTION</span>
                                 <p>
                                     @if ($eticket->solution == "")
-                                    No Data Avaliable
+                                    -
                                     @else
                                     {{$eticket->solution}}
                                     @endif
@@ -77,11 +77,23 @@
                     <table class="text-muted">
                         <tr>
                             <td>Problem Type</td>
-                            <td>&nbsp;:</td>
+                            <td>&nbsp;: 
+                                @if ($eticket->problem_type == "")
+                                -
+                                @else
+                                {{$eticket->problem_type}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Replacement Part</td>
-                            <td>&nbsp;:</td>
+                            <td>&nbsp;:
+                                @if ($eticket->rep_part == "")
+                                -
+                                @else
+                                {{$eticket->rep_part}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Status</td>
@@ -101,6 +113,7 @@
                     </table>
                     <div class="mt-5 mb-3">
                         <a href="#" class="btn btn-sm btn-warning" onclick="window.history.go(-1); return false;">Back</a>
+                        <a href="/eticket/edit/{{$eticket->id}}" class="btn btn-sm btn-info">Edit</a>
                     </div>
                 </div>
             </div>

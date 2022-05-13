@@ -35,7 +35,8 @@
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box">
-                            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-hourglass-half"></i></span>
+                            <span class="info-box-icon bg-warning elevation-1"><i
+                                    class="fa fa-hourglass-half"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">On Process</span>
@@ -71,7 +72,7 @@
                             <span class="info-box-icon bg-success elevation-1"><i class="fa fa-check"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">SUCCESS</span>
+                                <span class="info-box-text">Close</span>
                                 <span class="info-box-number">2 <small>Ticket</small></span>
                             </div>
                             <!-- /.info-box-content -->
@@ -106,13 +107,30 @@
                             <td>{{$t->name}}</td>
                             <td>{{$t->problem}}</td>
                             <td>
-                                <small class="text-success mr-1">
+                                @if ($t->status == "0")
+                                <small class="text-info mr-1">
                                     <i class="fas fa-arrow-up"></i>
                                     Open
                                 </small>
+                                @elseif($t->status == "1")
+                                <small class="text-warning mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    On Process
+                                </small>
+                                @elseif($t->status == "2")
+                                <small class="text-danger mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Pending
+                                </small>
+                                @elseif ($t->status == "3")
+                                <small class="text-success mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Close
+                                </small>
+                                @endif
                             </td>
                             <td>
-                                <a href="/eticket/edit/{{$t->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
+                                <a href="/eticket/detailA/{{$t->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                     Detail</a>
                             </td>
                         </tr>

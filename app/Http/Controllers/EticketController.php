@@ -38,21 +38,40 @@ class EticketController extends Controller
         ->get();
         return view ('pages.eticket.eticket_admin', compact("ticket"));
     }
-    public function admin_edit($id)
+    public function admin_detail($id)
     {
-        $eticket = eticket::find($id);
-
-        return view('pages/eticket/eticket_admin_edit', ['eticket'=> $eticket]);
+        $eticket = DB::table('eticket')
+        ->join('user', 'user.id', '=', 'eticket.id_user')
+        ->select('eticket.*', 'user.name', 'user.section', 'user.nik')
+        ->where('eticket.id', $id)
+        ->first();
+        
+        return view('pages/eticket/eticket_admin_detail', ['eticket'=> $eticket]);
     }
     public function user_detail($id)
     {
-        $eticket = eticket::find($id);
-
+        $eticket = DB::table('eticket')
+        ->join('user', 'user.id', '=', 'eticket.id_user')
+        ->select('eticket.*', 'user.name', 'user.section', 'user.nik')
+        ->where('eticket.id', $id)
+        ->first();
+        
         return view('pages/eticket/eticket_user_detail', ['eticket'=> $eticket]);
     }
-    public function create()
+    public function admin_edit($id)
     {
-        //
+
+        $eticket = DB::table('eticket')
+        ->join('user', 'user.id', '=', 'eticket.id_user')
+        ->select('eticket.*', 'user.name', 'user.section', 'user.nik')
+        ->where('eticket.id', $id)
+        ->first();
+
+        $fa_k = DB::table('komputer')
+        ->select('*')
+        ->get();
+
+        return view('pages/eticket/eticket_admin_edit', compact("eticket", "fa_k"));
     }
 
     /**
@@ -78,6 +97,7 @@ class EticketController extends Controller
             'id_user' => Auth::user()->id,
             'ticket_no' => 'ET'.date('Ym').$unique_ticket,
             'problem' => $request->problem,
+            'status' => '0',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

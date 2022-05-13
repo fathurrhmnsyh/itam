@@ -43,10 +43,27 @@
                             <td>{{$t->ticket_no}}</td>
                             <td>{{$t->problem}}</td>
                             <td>
-                                <small class="text-success mr-1">
-                                    <i class="fas fa-arrow-up"></i>
-                                    Open
-                                </small>
+                                    @if ($t->status == "0")
+                                    <small class="text-info mr-1">
+                                        <i class="fas fa-arrow-up"></i>
+                                        Open
+                                    </small>
+                                    @elseif($t->status == "1")
+                                    <small class="text-warning mr-1">
+                                        <i class="fas fa-arrow-up"></i>
+                                        On Process
+                                    </small>
+                                    @elseif($t->status == "2")
+                                    <small class="text-danger mr-1">
+                                        <i class="fas fa-arrow-up"></i>
+                                        Pending
+                                    </small>
+                                    @elseif ($t->status == "3")
+                                    <small class="text-success mr-1">
+                                        <i class="fas fa-arrow-up"></i>
+                                        Close
+                                    </small>
+                                    @endif
                             </td>
                             <td>
                                 <a href="/eticket/detailU/{{$t->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>

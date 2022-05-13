@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Eticket | MyHelpdesk')
-{{-- @section('title-sub', 'Eticket') --}}
+@section('title-sub', 'Edit Ticket')
 @section('breadcrumb')
 {{-- <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="/">IT Asset</a></li>
@@ -13,79 +13,94 @@
 
 <div class="col-12">
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Detail Ticket</h3>
-
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                        src="{{url('backend/dist/img/user1-128x128.jpg')}}" alt="user image">
-                                    <span class="username">
-                                        <a href="#">Restu Prayuda</a>
-                                    </span>
-                                    <span class="description">Shared publicly - 7:45 PM today</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <span style="color: #0066FF">PROBLEM</span>
-                                <p>
-                                    HRMS tidak bisa
-                                </p>
-                                <hr>
-                                <span style="color: #0066FF ">SOLUTION</span>
-                            </div>
-
-
-                        </div>
+            <div class="col-md-12">
+                <form class="row g-3" method="post" action="">
+                    {{ csrf_field() }}
+                    {{method_field('PUT')}}
+                    <div class="col-md-3">
+                        <label for="ticket_no" class="form-label">Ticket No</label>
+                        <input type="text" name="ticket_no" class="form-control" id="ticket_no"
+                            value="{{$eticket->ticket_no}}" disabled>
                     </div>
-                </div>
-                <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                    <p><strong>Ticket No :</strong></p><h3 class="text-primary">ET20220523</h3>
-                    <br>
-                    <div class="text-muted">
-                        <p class="text-sm">Date
-                            <b class="d-block">2022-05-12</b>
-                        </p>
-                        <p class="text-sm">Time
-                            <b class="d-block">07:24:25</b>
-                        </p>
+                    <div class="col-md-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" name="date" class="form-control" id="date"
+                            value="{{$eticket->date}}" disabled>
                     </div>
+                    <div class="col-md-3">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" name="time" class="form-control" id="time"
+                            value="{{$eticket->time}}" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="id_user" class="form-label">User</label>
+                        <input type="text" name="id_user" class="form-control" id="id_user"
+                            value="{{$eticket->name}}" disabled>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="problem" class="form-label">Problem</label>
+                        <textarea class="form-control" rows="3" disabled>{{$eticket->problem}}</textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="serial_number" class="form-label">Problem Type</label>
+                        <select class="form-control">
+                            <option value="">Power Supply</option>
+                            <option value="">RAM</option>
+                            <option value="">Heatsink</option>
+                            <option value="">Mainboard</option>
+                            <option value="">Monitor</option>
+                            <option value="">LAN</option>
+                            <option value="">TBS</option>
+                            <option value="">TMS</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="serial_number" class="form-label">Solution</label>
+                        <textarea class="form-control" rows="3" >{{$eticket->solution}}</textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="serial_number" class="form-label">Replacement Part</label>
+                        <input type="text" name="serial_number" class="form-control" id="serial_number"
+                            value="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="serial_number" class="form-label">ID Kode FA</label>
+                        <input type="text" name="serial_number" class="form-control" id="serial_number"
+                            value="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="serial_number" class="form-label">Type Asset</label>
+                        <select class="form-control">
+                            <option value="">-</option>
+                            <option value="">Komputer</option>
+                            <option value="">Laptop</option>
+                            <option value="">Printer</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="serial_number" class="form-label">Status</label>
+                        <select class="form-control">
+                            <option value="">Open</option>
+                            <option value="">On Progress</option>
+                            <option value="">Pending</option>
+                            <option value="">Close</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <br>
+                        <input class="btn btn-warning" action="action" onclick="window.history.go(-1); return false;"
+                            type="submit" value="Cancel" />
+                        <input type="submit" class="btn btn-primary" value="Simpan">
+                    </div>
+                </form>
+                <section class="content-header">
+                    <h3>
 
-                    <h5 class="mt-5 text-muted"></h5>
-                    <table class="text-muted">
-                        <tr>
-                            <td>Problem Type</td>
-                            <td>&nbsp;:</td>
-                        </tr>
-                        <tr>
-                            <td>Replacement Part</td>
-                            <td>&nbsp;:</td>
-                        </tr>
-                        <tr>
-                            <td>Status</td>
-                            <td>&nbsp;: <span class="badge bg-danger">Pending</span></td>
-                        </tr>
-                    </table>
-                    <div class="mt-5 mb-3">
-                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                    </div>
-                </div>
+                    </h3>
+                </section>
             </div>
-        </div>
-        <!-- /.card-body -->
+        </div> 
     </div>
     <!-- /.card -->
 </div>
