@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Eticket;
+use App\Komputer;
 use Carbon\Carbon;
 use Auth;
 
@@ -67,11 +68,10 @@ class EticketController extends Controller
         ->where('eticket.id', $id)
         ->first();
 
-        $fa_k = DB::table('komputer')
-        ->select('*')
-        ->get();
+        $komputer = DB::table('komputer')->get();
+       
 
-        return view('pages/eticket/eticket_admin_edit', compact("eticket", "fa_k"));
+        return view('pages/eticket/eticket_admin_edit', compact("eticket", "komputer"));
     }
 
     /**

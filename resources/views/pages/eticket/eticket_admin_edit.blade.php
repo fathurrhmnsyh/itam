@@ -65,17 +65,18 @@
                             value="">
                     </div>
                     <div class="col-md-3">
-                        <label for="serial_number" class="form-label">ID Kode FA</label>
-                        <input type="text" name="serial_number" class="form-control" id="serial_number"
-                            value="">
+                        <label for="type_asset" class="form-label">Type Asset</label>
+                        <select class="form-control" id="type_asset">
+                            <option value="">-</option>
+                            <option value="1">Komputer</option>
+                            <option value="2">Laptop</option>
+                            <option value="3">Printer</option>
+                        </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="serial_number" class="form-label">Type Asset</label>
-                        <select class="form-control">
-                            <option value="">-</option>
-                            <option value="">Komputer</option>
-                            <option value="">Laptop</option>
-                            <option value="">Printer</option>
+                        <label for="serial_number" class="form-label">ID Kode FA</label>
+                        <select class="form-control" name="id_kode_fa">
+                         
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -104,5 +105,24 @@
     </div>
     <!-- /.card -->
 </div>
-
+<script>
+    $(document).on('change', '#type_asset', function() {
+        alert('123');
+    });
+</script>
 @endsection
+{{-- @push('page-script')
+<script>
+    $(function () {
+        $('#type_asse').change({
+            alert("The text has been changed.");
+        });
+    });
+    
+    
+
+</script> --}}
+
+
+
+
