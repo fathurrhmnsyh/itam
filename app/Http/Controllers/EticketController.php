@@ -73,6 +73,10 @@ class EticketController extends Controller
 
         return view('pages/eticket/eticket_admin_edit', compact("eticket", "komputer"));
     }
+    public function getFA($id)
+    {
+        echo json_encode(DB::table('komputer')->where('category_id', $id)->get());
+    }
 
     /**
      * Store a newly created resource in storage.

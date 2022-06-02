@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="serial_number" class="form-label">ID Kode FA</label>
-                        <select class="form-control" name="id_kode_fa">
+                        <select class="form-control" name="id_kode_fa" id="id_kode_fa">
                          
                         </select>
                     </div>
@@ -106,22 +106,34 @@
     <!-- /.card -->
 </div>
 <script>
-    $(document).on('change', '#type_asset', function() {
-        alert('123');
+   $(document).ready(function(){
+    $('#type_asset').on('change', function(){
+        var id = $(this).find(':selected')[0].id;
+        alert(id);
+        // let id = $(this).val();
+        // $('#id_kode_fa').empty();
+        // $('#id_kode_fa').append(`<option value="0" disabled selected>Processing...</option>`);
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'getIdFA',
+        //     success: function(response) {
+        //         var response = JSON.parse(response);
+        //         console.log(response);
+        //         $('#id_kode_fa').empty();
+        //         $('#id_kode_fa').append(`<option value="0" disabled selected> Select id fa</option>`);
+        //         response.forEach(element => {
+        //             $('#id_kode_fa').append(`<option value="${element['id']}">${element['kode_fa']}</option>"`);
+        //         });
+        //     }
+        // });
     });
+   });
 </script>
 @endsection
-{{-- @push('page-script')
-<script>
-    $(function () {
-        $('#type_asse').change({
-            alert("The text has been changed.");
-        });
-    });
-    
+
     
 
-</script> --}}
+
 
 
 
