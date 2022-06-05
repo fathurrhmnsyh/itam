@@ -1,5 +1,5 @@
 <!-- jQuery -->
-<script src="{{url('backend/plugins/jquery/jquery.min.js')}}"></script>
+{{-- <script src="{{url('backend/plugins/jquery/jquery.min.js')}}"></script> --}}
 <!-- Bootstrap 4 -->
 <script src="{{url('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- DataTables -->

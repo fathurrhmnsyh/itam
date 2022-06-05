@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="type_asset" class="form-label">Type Asset</label>
-                        <select class="form-control" id="type_asset">
+                        <select class="form-control" id="asset">
                             <option value="">-</option>
                             <option value="1">Komputer</option>
                             <option value="2">Laptop</option>
@@ -87,6 +87,7 @@
                             <option value="">Pending</option>
                             <option value="">Close</option>
                         </select>
+                        
                     </div>
                     <div class="col-md-12">
                         <br>
@@ -96,40 +97,28 @@
                     </div>
                 </form>
                 <section class="content-header">
-                    <h3>
-
-                    </h3>
+                    <tr>
+                        <td id="type_result">sss</td>
+                    </tr>
                 </section>
             </div>
         </div> 
     </div>
     <!-- /.card -->
 </div>
-<script>
-   $(document).ready(function(){
-    $('#type_asset').on('change', function(){
-        var id = $(this).find(':selected')[0].id;
-        alert(id);
-        // let id = $(this).val();
-        // $('#id_kode_fa').empty();
-        // $('#id_kode_fa').append(`<option value="0" disabled selected>Processing...</option>`);
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'getIdFA',
-        //     success: function(response) {
-        //         var response = JSON.parse(response);
-        //         console.log(response);
-        //         $('#id_kode_fa').empty();
-        //         $('#id_kode_fa').append(`<option value="0" disabled selected> Select id fa</option>`);
-        //         response.forEach(element => {
-        //             $('#id_kode_fa').append(`<option value="${element['id']}">${element['kode_fa']}</option>"`);
-        //         });
-        //     }
-        // });
-    });
-   });
-</script>
+
 @endsection
+
+@push('page-script')
+<script>
+    jQuery(document).ready(function (){
+     $("#asset").change(function() {
+         var nilai = $(this).val();
+         $('#type_result').html(nilai);
+     });
+    });
+</script>
+@endpush
 
     
 

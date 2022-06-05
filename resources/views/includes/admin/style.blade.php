@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 {{-- drop down select --}}
 <script src="{{url('backend/dist/script/jquery.js')}}"></script>
-<script src="{{url('backend/dist/script/jquery-3.5.1.js')}}"></script>
+{{-- <script src="{{url('backend/dist/script/jquery-3.5.1.js')}}"></script> --}}
 <!-- Jquery -->
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 {{-- select2 --}}
