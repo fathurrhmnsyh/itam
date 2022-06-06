@@ -73,10 +73,13 @@ class EticketController extends Controller
 
         return view('pages/eticket/eticket_admin_edit', compact("eticket", "komputer"));
     }
-    public function getFA($id)
+    public function getkom(Request $request , $id)
     {
-        echo json_encode(DB::table('komputer')->where('category_id', $id)->get());
+        
+        $getID = DB::table($request->asset_type)->pluck("kode_fa");
+        return json_encode($getID);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -101,7 +104,7 @@ class EticketController extends Controller
             'id_user' => Auth::user()->id,
             'ticket_no' => 'ET'.date('Ym').$unique_ticket,
             'problem' => $request->problem,
-            'status' => '0',
+            'status' => '1',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
@@ -141,7 +144,20 @@ class EticketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('eticket')->where('id', $request->id)->update([
+            'problem_type' => $request->problem_type,
+            'solution' => $request->solution,
+            'rep_part' => $request->rep_part,
+            'id_asset' => $request->asset_type,
+            'id_kode_fa' => $request->id_kode_fa,
+            'status' => $request->status,
+            'technician' => Auth::user()->id,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+        
+        
+        return redirect('/eticket');
+        
     }
 
     /**

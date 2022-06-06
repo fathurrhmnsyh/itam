@@ -15,10 +15,11 @@
     <div class="card">
         <div class="card-body">
             <div class="col-md-12">
-                <form class="row g-3" method="post" action="">
+                <form class="row g-3" method="post" action="/eticket/update/{{$eticket->id}}" id="form-edit">
                     {{ csrf_field() }}
                     {{method_field('PUT')}}
                     <div class="col-md-3">
+                        <input type="text" name="id" id="id" value="{{$eticket->id}}" hidden>
                         <label for="ticket_no" class="form-label">Ticket No</label>
                         <input type="text" name="ticket_no" class="form-control" id="ticket_no"
                             value="{{$eticket->ticket_no}}" disabled>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="serial_number" class="form-label">Problem Type</label>
-                        <select class="form-control">
+                        <select class="form-control" name="problem_type">
                             <option value="">Power Supply</option>
                             <option value="">RAM</option>
                             <option value="">Heatsink</option>
@@ -57,35 +58,34 @@
                     </div>
                     <div class="col-md-12">
                         <label for="serial_number" class="form-label">Solution</label>
-                        <textarea class="form-control" rows="3" >{{$eticket->solution}}</textarea>
+                        <textarea class="form-control" rows="3" name="solution" >{{$eticket->solution}}</textarea>
                     </div>
                     <div class="col-md-3">
-                        <label for="serial_number" class="form-label">Replacement Part</label>
-                        <input type="text" name="serial_number" class="form-control" id="serial_number"
+                        <label for="rep_part" class="form-label">Replacement Part</label>
+                        <input type="text" name="rep_part" class="form-control" id="rep_part"
                             value="">
                     </div>
                     <div class="col-md-3">
                         <label for="type_asset" class="form-label">Type Asset</label>
-                        <select class="form-control" id="asset">
-                            <option value="">-</option>
-                            <option value="1">Komputer</option>
-                            <option value="2">Laptop</option>
-                            <option value="3">Printer</option>
+                        <select id="asset_type" name="asset_type" class="form-control" >
+                            <option value=""></option>
+                            <option value="komputer">Komputer</option>
+                            <option value="laptop">Laptop</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="serial_number" class="form-label">ID Kode FA</label>
+                        <label for="id_kode_fa" class="form-label">ID Kode FA</label>
                         <select class="form-control" name="id_kode_fa" id="id_kode_fa">
                          
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="serial_number" class="form-label">Status</label>
-                        <select class="form-control">
-                            <option value="">Open</option>
-                            <option value="">On Progress</option>
-                            <option value="">Pending</option>
-                            <option value="">Close</option>
+                        <select class="form-control" name="status">
+                            <option value="1">Open</option>
+                            <option value="2">On Progress</option>
+                            <option value="3">Pending</option>
+                            <option value="4">Close</option>
                         </select>
                         
                     </div>
@@ -97,9 +97,7 @@
                     </div>
                 </form>
                 <section class="content-header">
-                    <tr>
-                        <td id="type_result">sss</td>
-                    </tr>
+                    
                 </section>
             </div>
         </div> 
@@ -110,13 +108,29 @@
 @endsection
 
 @push('page-script')
-<script>
-    jQuery(document).ready(function (){
-     $("#asset").change(function() {
-         var nilai = $(this).val();
-         $('#type_result').html(nilai);
-     });
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        
+        jQuery('select[name="asset_type"]').on('change', function () {
+                jQuery.ajax({
+                    url: '/eticket/edit/getkom/{id}',
+                    type: "GET",
+                    dataType: "json",
+                    data: $('#form-edit').serialize(),
+
+                    success: function (data) {
+                        console.log(data);
+                        jQuery('select[name="id_kode_fa"]').empty();
+                        jQuery.each(data, function (key, value) {
+                            $('select[name="id_kode_fa"]').append('<option value="' +
+                                key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            
+            });
     });
+
 </script>
 @endpush
 

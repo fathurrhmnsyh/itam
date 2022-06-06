@@ -160,11 +160,11 @@
             order : [[0, 'dsc']]
         });
     });
-    $(document).ready(function(){
-        setTimeout(function() {
-            location.reload();
-        }, 10000);
-    })
+    // $(document).ready(function(){
+    //     setTimeout(function() {
+    //         location.reload();
+    //     }, 10000);
+    // })
     
 
 </script>

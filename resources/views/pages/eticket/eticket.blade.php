@@ -43,22 +43,22 @@
                             <td>{{$t->ticket_no}}</td>
                             <td>{{$t->problem}}</td>
                             <td>
-                                    @if ($t->status == "0")
+                                    @if ($t->status == "1")
                                     <small class="text-info mr-1">
                                         <i class="fas fa-arrow-up"></i>
                                         Open
                                     </small>
-                                    @elseif($t->status == "1")
+                                    @elseif($t->status == "2")
                                     <small class="text-warning mr-1">
                                         <i class="fas fa-arrow-up"></i>
                                         On Process
                                     </small>
-                                    @elseif($t->status == "2")
+                                    @elseif($t->status == "3")
                                     <small class="text-danger mr-1">
                                         <i class="fas fa-arrow-up"></i>
                                         Pending
                                     </small>
-                                    @elseif ($t->status == "3")
+                                    @elseif ($t->status == "4")
                                     <small class="text-success mr-1">
                                         <i class="fas fa-arrow-up"></i>
                                         Close

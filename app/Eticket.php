@@ -15,6 +15,11 @@ class Eticket extends Model
         'problem',
         'problem_type',
         'solution',
+        'rep_part',
+        'status',
+        'id_kode_fa',
+        'id_asset',
+        'technician',
         'rep_part'
     ];
 }

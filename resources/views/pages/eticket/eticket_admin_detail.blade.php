@@ -98,13 +98,13 @@
                         <tr>
                             <td>Status</td>
                             <td>
-                            @if ($eticket->status == "0")
+                            @if ($eticket->status == "1")
                                 &nbsp;: <span class="badge bg-info">Open</span>
-                            @elseif($eticket->status == "1")
-                                &nbsp;: <span class="badge bg-warning">On Process</span>
                             @elseif($eticket->status == "2")
-                                &nbsp;: <span class="badge bg-danger">Pending</span>
+                                &nbsp;: <span class="badge bg-warning">On Process</span>
                             @elseif($eticket->status == "3")
+                                &nbsp;: <span class="badge bg-danger">Pending</span>
+                            @elseif($eticket->status == "4")
                                 &nbsp;: <span class="badge bg-success">Close</span>
                             @endif
                             </td>
