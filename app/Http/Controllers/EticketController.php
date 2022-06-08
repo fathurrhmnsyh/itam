@@ -76,7 +76,7 @@ class EticketController extends Controller
     public function getkom(Request $request , $id)
     {
         
-        $getID = DB::table($request->asset_type)->pluck("kode_fa");
+        $getID = DB::table($request->asset_type)->pluck("kode_fa", "id");
         return json_encode($getID);
     }
     
