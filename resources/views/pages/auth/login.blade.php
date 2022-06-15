@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ITCS | Log in</title>
+    <title>MY HELPDESK | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,7 +26,7 @@
         <div class="card">
             <br>
             <div class="login-logo">
-                <img src="{{url('backend/dist/img/itcs-logo-login.png')}}" alt="AdminLTE Logo">
+                <img src="{{url('backend/dist/img/myhd-logo-login.png')}}" alt="AdminLTE Logo">
             </div>
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
