@@ -41,6 +41,11 @@
                                     <span class="description">{{$eticket->section}} - {{$eticket->nik}}</span>
                                 </div>
                                 <!-- /.user-block -->
+                                <span style="color: #0066FF">ISSUE</span>
+                                <p>
+                                    {{$eticket->issue}}
+                                </p>
+                                <hr>
                                 <span style="color: #0066FF">PROBLEM</span>
                                 <p>
                                     {{$eticket->problem}}

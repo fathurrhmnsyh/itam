@@ -17,6 +17,10 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if (Auth::attempt($request->only('nik', 'password'))) {
+
+            if ($request->user()->role == 'user') {
+                return redirect('/eticket');
+            }
             return redirect('/');
         }
         return redirect('/auth');

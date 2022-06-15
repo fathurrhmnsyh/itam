@@ -47,6 +47,7 @@
                     <label for="p_jenis">Jenis Processor</label>
                     <select name="p_jenis" class="form-control">
                         <option>-pilih-</option>
+                        <option value="Pentium">Pentium</option>
                         <option value="Dual Core">Dual Core</option>
                         <option value="Core 2 Duo">Core 2 Duo</option>
                         <option value="Core i3">Core i3</option>

@@ -14,6 +14,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+               
+               @if (auth()->user()->role=="admin")
                 <li class="nav-item">
                     <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -22,35 +25,7 @@
                         </p>
                     </a>
                 </li>
-
-                <li class="nav-header">E-TIKET</li>
-                <li class="nav-item has-treeview {{request()->is('eticket', 'eticket/admin') ? 'menu-open': ''}}">
-                    <a href="#" class="nav-link {{request()->is('eticket', 'eticket/admin') ? 'active': ''}}">
-                        <i class="nav-icon fas fa-ticket-alt "></i>
-                        <p>
-                            E-Ticket
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview">
-                            <a href="/eticket" class="nav-link {{request()->is('eticket') ? 'active': ''}}">
-                                <i class="far fa-circle nav-icon {{request()->is('eticket') ? 'far fa-dot-circle': ''}}"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="eticket/admin" class="nav-link {{request()->is('eticket/admin') ? 'active': ''}}">
-                                <i class="far fa-circle nav-icon {{request()->is('eticket/admin') ? 'far fa-dot-circle': ''}}"></i>
-                                <p>
-                                    Admin
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
                 <li class="nav-header">IT ASSET</li>
                 
                 <li class="nav-item has-treeview {{request()->is('komputer','komputer/add', 'laptop', 'laptop/add', 'printer', 'user_kom', 'user_laptop') ? 'menu-open' : ''}}">
@@ -276,7 +251,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
                
+                {{-- Kalo di tambah role admin --}}
                 @if (auth()->user()->role=="admin")
                     
                 
@@ -309,6 +286,46 @@
                     </a>
                 </li>
                 @endif
+                
+                <li class="nav-header">E-TIKET</li>
+                <li class="nav-item has-treeview {{request()->is('eticket', 'eticket/admin','eticket/eriwayat') ? 'menu-open': ''}}">
+                    <a href="#" class="nav-link {{request()->is('eticket', 'eticket/admin', 'eticket/eriwayat') ? 'active': ''}}">
+                        <i class="nav-icon fas fa-ticket-alt "></i>
+                        <p>
+                            E-Ticket
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="/eticket"  class="nav-link {{request()->is('eticket') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('eticket') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        @if (auth()->user()->role=="admin")
+                        <li class="nav-item has-treeview">
+                            <a href="eticket/admin"  class="nav-link {{request()->is('eticket/admin') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('eticket/admin') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{route('et.eriwayat')}}"  class="nav-link {{request()->is('eticket/eriwayat') ? 'active': ''}}">
+                                <i class="far fa-circle nav-icon {{request()->is('eticket/eriwayat') ? 'far fa-dot-circle': ''}}"></i>
+                                <p>
+                                    Eriwayat
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                    </ul>
+                </li>
+               
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

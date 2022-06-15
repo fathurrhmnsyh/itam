@@ -24,9 +24,10 @@
                         <tr>
                             <th>No</th>
                             <th>Date</th>
+                            <th>Name</th>
                             <th>Time</th>
                             <th>No Ticket</th>
-                            <th>Problem</th>
+                            <th>Issue</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -39,9 +40,10 @@
                         <tr>
                             <td>{{$no++}}</td>
                             <td>{{$t->date}}</td>
+                            <td>{{$t->name }}</td>
                             <td>{{$t->time}}</td>
                             <td>{{$t->ticket_no}}</td>
-                            <td>{{$t->problem}}</td>
+                            <td>{{$t->issue}}</td>
                             <td>
                                     @if ($t->status == "1")
                                     <small class="text-info mr-1">
@@ -106,7 +108,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="id_user" class="form-control" id="name" value="{{auth()->user()->id}}"
+                        <input type="text" name="id_user" class="form-control" id="name" value="{{auth()->user()->name}}"
                             disabled>
                     </div>
                     <div class="col-md-3 form-group">
@@ -114,8 +116,8 @@
                         <input type="text" name="name" class="form-control" id="no_ticket" disabled>
                     </div>
                     <div class="col-md-12 form-group">
-                        <label for="name" class="form-label">Problem</label>
-                        <textarea class="form-control" rows="3" name="problem" placeholder="Enter ..."></textarea>
+                        <label for="name" class="form-label">Issue</label>
+                        <textarea class="form-control" rows="3" name="issue" placeholder="Enter ..."></textarea>
                     </div>
                     {{-- <div class="col-md-12 form-group">
                         <label for="name" class="form-label">Attachment File</label>

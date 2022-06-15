@@ -41,6 +41,11 @@
                                     <span class="description">{{$eticket->section}} - {{$eticket->nik}}</span>
                                 </div>
                                 <!-- /.user-block -->
+                                <span style="color: #0066FF">ISSUE</span>
+                                <p>
+                                    {{$eticket->issue}}
+                                </p>
+                                <hr>
                                 <span style="color: #0066FF">PROBLEM</span>
                                 <p>
                                     {{$eticket->problem}}
@@ -49,7 +54,7 @@
                                 <span style="color: #0066FF ">SOLUTION</span>
                                 <p>
                                     @if ($eticket->solution == "")
-                                    No Data Avaliable
+                                    -
                                     @else
                                     {{$eticket->solution}}
                                     @endif
@@ -77,22 +82,34 @@
                     <table class="text-muted">
                         <tr>
                             <td>Problem Type</td>
-                            <td>&nbsp;:</td>
+                            <td>&nbsp;: 
+                                @if ($eticket->problem_type == "")
+                                -
+                                @else
+                                {{$eticket->problem_type}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Replacement Part</td>
-                            <td>&nbsp;:</td>
+                            <td>&nbsp;:
+                                @if ($eticket->rep_part == "")
+                                -
+                                @else
+                                {{$eticket->rep_part}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Status</td>
                             <td>
-                            @if ($eticket->status == "0")
+                            @if ($eticket->status == "1")
                                 &nbsp;: <span class="badge bg-info">Open</span>
-                            @elseif($eticket->status == "1")
-                                &nbsp;: <span class="badge bg-warning">On Process</span>
                             @elseif($eticket->status == "2")
-                                &nbsp;: <span class="badge bg-danger">Pending</span>
+                                &nbsp;: <span class="badge bg-warning">On Process</span>
                             @elseif($eticket->status == "3")
+                                &nbsp;: <span class="badge bg-danger">Pending</span>
+                            @elseif($eticket->status == "4")
                                 &nbsp;: <span class="badge bg-success">Close</span>
                             @endif
                             </td>
@@ -101,6 +118,7 @@
                     </table>
                     <div class="mt-5 mb-3">
                         <a href="#" class="btn btn-sm btn-warning" onclick="window.history.go(-1); return false;">Back</a>
+                        {{-- <a href="/eticket/edit/{{$eticket->id}}" class="btn btn-sm btn-info">Edit</a> --}}
                     </div>
                 </div>
             </div>
@@ -109,5 +127,6 @@
     </div>
     <!-- /.card -->
 </div>
+
 
 @endsection

@@ -8,6 +8,7 @@ use App\Eticket;
 use App\Komputer;
 use Carbon\Carbon;
 use Auth;
+use Alert;
 
 class EticketController extends Controller
 {
@@ -19,6 +20,10 @@ class EticketController extends Controller
     public function index()
     {
         $ticket = DB::table('eticket')
+        ->join('user', 'user.id', '=', 'eticket.id_user')
+        ->where('id_user', Auth::user()->id)
+        ->select('eticket.*', 'user.name')
+        ->orderBy('status', 'asc')
         ->orderBy('id', 'desc')
         ->get();
         return view ('pages.eticket.eticket', compact("ticket"));
@@ -32,12 +37,26 @@ class EticketController extends Controller
      */
     public function admin_index()
     {
+        $open = DB::table('eticket')
+        ->where('status', '=', 1)
+        ->count();
+        $onprocc = DB::table('eticket')
+        ->where('status', '=', 2)
+        ->count();
+        $pending = DB::table('eticket')
+        ->where('status', '=', 3)
+        ->count();
+        $close = DB::table('eticket')
+        ->where('status', '=', 4)
+        ->count();
+
         $ticket = DB::table('eticket')
         ->join('user', 'user.id', '=', 'eticket.id_user')
         ->select('eticket.*', 'user.name')
+        ->orderBy('status', 'asc')
         ->orderBy('id', 'desc')
         ->get();
-        return view ('pages.eticket.eticket_admin', compact("ticket"));
+        return view ('pages.eticket.eticket_admin', compact("ticket", "open", "onprocc", "pending", "close" ));
     }
     public function admin_detail($id)
     {
@@ -76,7 +95,7 @@ class EticketController extends Controller
     public function getkom(Request $request , $id)
     {
         
-        $getID = DB::table($request->asset_type)->pluck("kode_fa", "id");
+        $getID = DB::table($request->asset_type)->pluck("kode_fa", "kode_fa");
         return json_encode($getID);
     }
     
@@ -103,37 +122,16 @@ class EticketController extends Controller
             'time' => Carbon::now()->format('Y-m-d H:i:s'),
             'id_user' => Auth::user()->id,
             'ticket_no' => 'ET'.date('Ym').$unique_ticket,
-            'problem' => $request->problem,
+            'issue' => $request->issue,
             'status' => '1',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         
         
-        return redirect('/eticket');
+        return redirect('/eticket')->with('success', 'Ticket Add Successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -145,18 +143,19 @@ class EticketController extends Controller
     public function update(Request $request, $id)
     {
         DB::table('eticket')->where('id', $request->id)->update([
+            'problem' => $request->problem,
             'problem_type' => $request->problem_type,
             'solution' => $request->solution,
             'rep_part' => $request->rep_part,
             'id_asset' => $request->asset_type,
             'id_kode_fa' => $request->id_kode_fa,
             'status' => $request->status,
-            'technician' => Auth::user()->id,
+            'technician' => Auth::user()->name,
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         
         
-        return redirect('/eticket');
+        return redirect('/eticket/admin')->with('success', 'Ticket Update Successfully!');
         
     }
 
@@ -170,5 +169,21 @@ class EticketController extends Controller
     {
         //
     }
+    public function eriwayat(Request $request)
+    {
+        $eriwayat = DB::table('eticket')
+        ->select('eticket.*')
+        ->where('id_kode_fa', '>', '' )
+        ->orderBy('date', 'desc')
+        ->orderBy('id', 'desc')
+        ->get();
+
+        if ($request->ajax()) 
+        {
+         return datatables()->of($eriwayat)->make(true);
+        }
+        // dd($eticket);
+        return view ('pages.eticket.eriwayat');
+     }
     
 }

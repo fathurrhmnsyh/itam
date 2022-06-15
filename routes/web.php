@@ -23,8 +23,8 @@ Route::get('/auth', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
-//admin role
-Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
+// super admin role
+Route::group(['middleware' =>['auth', 'ceklevel:super_admin,user,admin']], function(){
 
 
     Route::get('/', 'DashboardController@index');
@@ -34,7 +34,7 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/asik', function(){
         return view('layouts/template');
     });
-
+    
     //User
 
     Route::get('/employee', 'EmployeeController@index');
@@ -140,20 +140,23 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
 
     //Eticket
     Route::get('/eticket', 'EticketController@index');
-    Route::get('/eticket/admin', 'EticketController@admin_index');
     Route::post('/eticket/store', 'EticketController@store');
-    Route::get('/eticket/detailA/{id}', 'EticketController@admin_detail');
     Route::get('/eticket/detailU/{id}', 'EticketController@user_detail');
+    Route::get('/eticket/admin', 'EticketController@admin_index');
+    Route::get('/eticket/detailA/{id}', 'EticketController@admin_detail');
     Route::get('/eticket/edit/{id}', 'EticketController@admin_edit');
     Route::get('/eticket/edit/getkom/{id}', 'EticketController@getkom');
     Route::get('/eticket/edit/getlap/{id}', 'EticketController@getlap');
     Route::put('/eticket/update/{id}', 'EticketController@update');
 
+    Route::get('/eticket/eriwayat/', 'EticketController@eriwayat')->name('et.eriwayat');
+   
+
 
 });
 
-//user role
-Route::group(['middleware' =>['auth', 'ceklevel:user,admin']], function(){
+//super admin role
+Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
 
 
     Route::get('/', 'DashboardController@index');
@@ -246,8 +249,32 @@ Route::group(['middleware' =>['auth', 'ceklevel:user,admin']], function(){
     Route::get('/elapt/search', 'EriwayatController@lapt_search');
     Route::get('/elapt/cari', 'EriwayatController@lapt_search_result');
     Route::get('/elapt/print/{id_lapt}', 'EriwayatController@lapt_print');
+    //Eticket
+    Route::get('/eticket', 'EticketController@index');
+    Route::post('/eticket/store', 'EticketController@store');
+    Route::get('/eticket/detailU/{id}', 'EticketController@user_detail');
+    Route::get('/eticket/admin', 'EticketController@admin_index');
+    Route::get('/eticket/detailA/{id}', 'EticketController@admin_detail');
+    Route::get('/eticket/edit/{id}', 'EticketController@admin_edit');
+    Route::get('/eticket/edit/getkom/{id}', 'EticketController@getkom');
+    Route::get('/eticket/edit/getlap/{id}', 'EticketController@getlap');
+    Route::put('/eticket/update/{id}', 'EticketController@update');
+
+    Route::get('/eticket/eriwayat/', 'EticketController@eriwayat')->name('et.eriwayat');
 
 
 
+
+});
+
+
+//user role
+Route::group(['middleware' =>['auth', 'ceklevel:user,admin,super_admin']], function(){
+
+    Route::get('/', 'DashboardController@index');
+
+    Route::get('/eticket', 'EticketController@index');
+    Route::post('/eticket/store', 'EticketController@store');
+    Route::get('/eticket/detailU/{id}', 'EticketController@user_detail');
 
 });

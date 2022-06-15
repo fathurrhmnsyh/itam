@@ -8,7 +8,7 @@ use App\Employee;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\DB;
-
+use Alert;
 
 class UsedAssetController extends Controller
 {
@@ -18,6 +18,7 @@ class UsedAssetController extends Controller
         ->join('komputer', 'used_asset.kode_fa_id', '=', 'komputer.id')
         ->join('employee', 'used_asset.employee_id', '=','employee.id')
         ->select('used_asset.*', 'komputer.kode_fa', 'employee.name', 'employee.nik')
+        ->orderBy('id', 'desc')
         ->get();
 
         $komputer = DB::table('komputer')
@@ -47,7 +48,7 @@ class UsedAssetController extends Controller
             'employee_id' => $request->name
         ]);
 
-        return redirect('/user_kom');
+        return redirect('/user_kom')->with('success', 'Data Add Successfully!');
     }
     public function print($id)
     {

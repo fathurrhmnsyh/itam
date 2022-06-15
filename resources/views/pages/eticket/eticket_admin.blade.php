@@ -24,7 +24,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">OPEN</span>
                                 <span class="info-box-number">
-                                    1
+                                    {{$open}}
                                     <small>Ticket</small>
                                 </span>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">On Process</span>
                                 <span class="info-box-number">
-                                    1
+                                    {{$onprocc}}
                                     <small>Ticket</small>
                                 </span>
                             </div>
@@ -60,7 +60,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">PENDING</span>
-                                <span class="info-box-number">5 <small>Ticket</small></span>
+                                <span class="info-box-number">{{$pending}} <small>Ticket</small></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -73,7 +73,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Close</span>
-                                <span class="info-box-number">2 <small>Ticket</small></span>
+                                <span class="info-box-number">{{$close}}<small>Ticket</small></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -89,7 +89,7 @@
                             <th>Time</th>
                             <th>No Ticket</th>
                             <th>User</th>
-                            <th>Problem</th>
+                            <th>Issue</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -105,7 +105,7 @@
                             <td>{{$t->time}}</td>
                             <td>{{$t->ticket_no}}</td>
                             <td>{{$t->name}}</td>
-                            <td>{{$t->problem}}</td>
+                            <td>{{$t->issue}}</td>
                             <td>
                                 @if ($t->status == "1")
                                 <small class="text-info mr-1">

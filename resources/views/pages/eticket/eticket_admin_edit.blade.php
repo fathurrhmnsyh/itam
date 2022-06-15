@@ -40,20 +40,26 @@
                             value="{{$eticket->name}}" disabled>
                     </div>
                     <div class="col-md-12">
+                        <label for="issue" class="form-label">Issue</label>
+                        <textarea class="form-control" rows="3" disabled>{{$eticket->issue}}</textarea>
+                    </div>
+                    <div class="col-md-12">
                         <label for="problem" class="form-label">Problem</label>
-                        <textarea class="form-control" rows="3" disabled>{{$eticket->problem}}</textarea>
+                        <textarea class="form-control" rows="3" name="solution" >{{$eticket->problem}}</textarea>
                     </div>
                     <div class="col-md-12">
                         <label for="serial_number" class="form-label">Problem Type</label>
                         <select class="form-control" name="problem_type">
-                            <option value="">Power Supply</option>
-                            <option value="">RAM</option>
-                            <option value="">Heatsink</option>
-                            <option value="">Mainboard</option>
-                            <option value="">Monitor</option>
-                            <option value="">LAN</option>
-                            <option value="">TBS</option>
-                            <option value="">TMS</option>
+                            <option value="{{$eticket->problem_type}}" selected='selected'>{{$eticket->problem_type}}</option>
+                            <option value="Power Supply">Power Supply</option>
+                            <option value="Printer">Printer</option>
+                            <option value="RAM">RAM</option>
+                            <option value="Heatsink">Heatsink</option>
+                            <option value="Mainboard">Mainboard</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="LAN">LAN</option>
+                            <option value="TBS">TBS</option>
+                            <option value="TMS">TMS</option>
                         </select>
                     </div>
                     <div class="col-md-12">
@@ -68,20 +74,33 @@
                     <div class="col-md-3">
                         <label for="type_asset" class="form-label">Type Asset</label>
                         <select id="asset_type" name="asset_type" class="form-control" >
+                            <option value="{{$eticket->id_asset}}" selected='selected'>{{$eticket->id_asset}}</option>
                             <option value=""></option>
-                            <option value="komputer">Komputer</option>
+                            <option value="komputer" >Komputer</option>
                             <option value="laptop">Laptop</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="id_kode_fa" class="form-label">ID Kode FA</label>
                         <select class="form-control" name="id_kode_fa" id="id_kode_fa">
+                            <option value="{{$eticket->id_kode_fa}}" selected='selected'>{{$eticket->id_kode_fa}}</option>
                          
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="serial_number" class="form-label">Status</label>
                         <select class="form-control" name="status">
+                            <option value="{{$eticket->status}}" selected='selected'>
+                                @if ($eticket->status == "1")
+                                    Open
+                                @elseif($eticket->status == "2")
+                                    On Process
+                                @elseif($eticket->status == "3")
+                                    Pending
+                                @elseif($eticket->status == "4")
+                                   Close 
+                                @endif
+                                </option>
                             <option value="1">Open</option>
                             <option value="2">On Progress</option>
                             <option value="3">Pending</option>

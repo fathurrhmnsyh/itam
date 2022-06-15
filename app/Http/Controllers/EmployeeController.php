@@ -6,6 +6,7 @@ use App\Employee;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\DB;
 use Session;
+use Alert;
 
 class EmployeeController extends Controller
 {
@@ -59,7 +60,7 @@ class EmployeeController extends Controller
     {
         DB::table('employee')->where('id', $id)->delete();
 
-        Session::flash('gagal','Data Delete Success');
-        return redirect('/employee');
+        
+        return redirect('/employee')->with('success', 'Data Delete Successfully!');
     }
 }

@@ -7,12 +7,13 @@ use App\Komputer;
 use PDF;
 use DB;
 use Session;
+use Alert;
 
 class KomputerController extends Controller
 {
     public function index()
     {
-        $komputer = Komputer::paginate(10);
+        $komputer = DB::table('komputer')->get();
 
         return view('pages/computer/computer_data', ['komputer' => $komputer]);
     }
@@ -54,8 +55,8 @@ class KomputerController extends Controller
             'lan_mac' => $request->lan_mac
         ]);
 
-        Session::flash('sukses','Data Add Succesfully');
-        return redirect('komputer');
+        
+        return redirect('komputer')->with('success', 'Data Add Successfully!');
     }
     public function detail($id)
     {
