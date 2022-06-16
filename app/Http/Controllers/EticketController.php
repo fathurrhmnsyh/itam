@@ -9,14 +9,10 @@ use App\Komputer;
 use Carbon\Carbon;
 use Auth;
 use Alert;
+use PDF;
 
 class EticketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $ticket = DB::table('eticket')
@@ -30,11 +26,6 @@ class EticketController extends Controller
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function admin_index()
     {
         $open = DB::table('eticket')
@@ -100,12 +91,6 @@ class EticketController extends Controller
     }
     
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $unique_ticket = Eticket::orderby('id', 'DESC')->pluck('id')->first();
@@ -133,13 +118,7 @@ class EticketController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         DB::table('eticket')->where('id', $request->id)->update([
@@ -159,16 +138,6 @@ class EticketController extends Controller
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
     public function eriwayat(Request $request)
     {
         $eriwayat = DB::table('eticket')
@@ -185,5 +154,54 @@ class EticketController extends Controller
         // dd($eticket);
         return view ('pages.eticket.eriwayat');
      }
+     public function erw_search()
+     {
+         $eticket = DB::table('eticket')
+        ->select('*')
+        ->get();
+ 
+        
+ 
+        return view('pages/eticket/eriwayat_search', compact("eticket"));
+     }
+
+     public function search_result(Request $request)
+    {
+	// menangkap data pencarian
+	$cari = $request->cari;
+ 
+ 	// mengambil data dari table pegawai sesuai pencarian data
+	$eticket = DB::table('eticket')
+	->where('id_kode_fa','like',"%".$cari."%")
+	->get();
+
+    // dd($eriwayat);
+
+    // mengirim data pegawai ke view index
+    // dd($eticket);
+    return view('pages/eticket/eriwayat_search_r', compact("eticket"));
+        
+
+    }
+    public function print(Request $request,$id_asset, $id_kode_fa)
+    {
+        
+        // dd($id_asset);
+       
+        $eticket = DB::table('eticket')
+        ->leftJoin($id_asset, 'eticket.id_kode_fa', '=', $id_asset.'.kode_fa') 
+        ->select('eticket.*', $id_asset.'.*')
+        ->where('eticket.id_kode_fa', $id_kode_fa)
+        ->get();
     
+        
+        // dd($eticket);
+
+        // $eriwayat = eriwayat_kom::find($id_kom);
+        $pdf = PDF::loadview('pages/eticket/eriwayat_print', ['eticket' => $eticket])->setPaper('a4', 'portrait');
+        // return $pdf->download('laporan-komputer-pdf.pdf');
+        return $pdf->stream();
+    }
+
+
 }

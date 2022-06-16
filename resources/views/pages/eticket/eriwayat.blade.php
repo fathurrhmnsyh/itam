@@ -14,7 +14,7 @@
     <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-            <a href="/ekom/search" type="button" class="btn btn-warning mb-3"><i class="fa fa-search"></i> Print
+            <a href="/eriwayat/search" type="button" class="btn btn-warning mb-3"><i class="fa fa-search"></i> Print
                 Data</a>
             <br><br>
 

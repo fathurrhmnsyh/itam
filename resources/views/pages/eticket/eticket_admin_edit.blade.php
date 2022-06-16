@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="problem" class="form-label">Problem</label>
-                        <textarea class="form-control" rows="3" name="solution" >{{$eticket->problem}}</textarea>
+                        <textarea class="form-control" rows="3" name="problem" >{{$eticket->problem}}</textarea>
                     </div>
                     <div class="col-md-12">
                         <label for="serial_number" class="form-label">Problem Type</label>
