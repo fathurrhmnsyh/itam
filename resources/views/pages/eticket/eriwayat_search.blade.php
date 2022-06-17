@@ -22,11 +22,14 @@
                             value="{{ old('cari') }}">
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-outline" value="CARI">
+                        <input type="submit" class="btn btn-primary btn-outline" value="Search">
                     </div>
                 </form>
             </div>
-            <br>
+
+            
+            <p style="color: brown"><i>Paste FA Code then click search </i></p>
+            
 
             <table class="table table-hover dataTable table-striped w-full" id="example1" data-plugin="dataTable">
                 <thead>
@@ -50,7 +53,6 @@
     </div>
     <!-- /.card -->
 </div>
-
 
 
 

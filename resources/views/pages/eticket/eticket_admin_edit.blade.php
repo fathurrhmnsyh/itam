@@ -78,6 +78,7 @@
                             <option value=""></option>
                             <option value="komputer" >Komputer</option>
                             <option value="laptop">Laptop</option>
+                            <option value="printer">Printer</option>
                         </select>
                     </div>
                     <div class="col-md-3">

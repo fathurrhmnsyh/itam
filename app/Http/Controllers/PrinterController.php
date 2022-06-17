@@ -23,7 +23,7 @@ class PrinterController extends Controller
     public function store(Request $request)
     {
         DB::table('printer')->insert([
-            'fa_code' => $request->fa_code,
+            'kode_fa' => $request->kode_fa,
             'purc_date' => $request->purc_date,
             'purc_ppb' => $request->purc_ppb,
             'serial_number' => $request->serial_number,

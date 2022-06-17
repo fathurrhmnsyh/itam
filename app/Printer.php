@@ -11,7 +11,7 @@ class Printer extends Model
         'purc_date',
         'purc_ppb',
         'printer_name',
-        'fa_code',
+        'kode_fa',
         'type',
         'code',
         'status',

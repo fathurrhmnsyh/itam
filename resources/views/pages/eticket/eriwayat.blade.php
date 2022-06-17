@@ -16,13 +16,30 @@
         <div class="card-body">
             <a href="/eriwayat/search" type="button" class="btn btn-warning mb-3"><i class="fa fa-search"></i> Print
                 Data</a>
-            <br><br>
+            {{-- <div class="example">
+                <form class="form-inline" action="/eriwayat/cari" method="GET">
+                    <div class="form-group">
+                        <input type="text" name="cari" class="form-control" placeholder="Search FA Code .."
+                            value="{{ old('cari') }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-outline" value="Search">
+                    </div>
+                </form>
+            </div>
+            <br>
+
+            <p style="color: brown"><i>Copy FA Code then paste in search column </i></p>
+            <br> --}}
+
+            <br>
+            <p style="color: brown"><i>Copy FA Code then click print data </i></p>
 
             <table id="table-eriwayat" class="table table-hover table-striped w-full">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th >Kode FA</th>
+                        <th>FA Code</th>
                         <th width="70px">Date</th>
                         <th>Issue</th>
                         <th>Problem</th>
@@ -30,7 +47,7 @@
                         <th>Technician</th>
                     </tr>
                 </thead>
-                
+
             </table>
         </div>
         <!-- /.card-body -->
@@ -82,11 +99,11 @@
                     name: 'technician'
                 }
             ],
-            order : [[0, 'dsc']]
+            order: [
+                [0, 'dsc']
+            ]
         });
-    });   
-    
+    });
 
 </script>
-@endpush 
-
+@endpush

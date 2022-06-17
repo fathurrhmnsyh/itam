@@ -114,8 +114,8 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
         Route::get('/stok', 'StokController@index');
         Route::post('/stok/out', 'StokController@out');
         Route::post('/stok/in', 'StokController@in');
-        Route::post('/stok/transaksi_riwayat_out', 'StokController@history_out');
-        Route::post('/stok/transaksi_riwayat_in', 'StokController@history_in');
+        Route::get('/stok/transaksi_riwayat_out', 'StokController@history_out');
+        Route::get('/stok/transaksi_riwayat_in', 'StokController@history_in');
     ///End Consumable Control
 
 

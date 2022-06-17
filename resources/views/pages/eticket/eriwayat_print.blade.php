@@ -38,14 +38,14 @@
             <img class="img-left" src="{{public_path('backend\dist\images\itcs-report-logo.png')}}" alt="">
         </div>
 		<h4>PT Trimitra Chitrahasta</h4>
-        <h5>Eriwayat {{$eticket[0]->id_asset}}</a></h5>
+        <h5 style="text-transform: Capitalize">Eriwayat {{$eticket[0]->id_asset}} </a></h5>
         <div class="col" align="right">
             <img class="img-right" src="{{public_path('backend\dist\images\logo-tch.png')}}" alt="">
         </div>
         <br>
 	</center>
-
-
+    @if ($eticket[0]->id_asset == 'komputer')
+        
     <table border="" width="700px" class="table-1">
         <tr>
             <td width="120px">Fixed Asset Code</td>
@@ -73,6 +73,59 @@
             <td width="240px">: &nbsp;{{$eticket[0]->lan_mac}}</td>
         </tr>
     </table>
+    @elseif($eticket[0]->id_asset == 'laptop')
+    <table border="" width="700px" class="table-1">
+        <tr>
+            <td width="120px">Fixed Asset Code</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->kode_fa}}</td>
+            <td width="120px">Hardisk Drive</td>
+            <td width="240px">: &nbsp;{{$eticket[0]->hd_merk}}&nbsp;{{$eticket[0]->hd_kapasitas}} GB</td>
+        </tr>
+        <tr>
+            <td width="120px">Merk Laptop</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->lp_merk}} {{$eticket[0]->lp_tipe}} </td>
+            <td width="120px">Graphic Card</td>
+            <td width="240px">:  &nbsp;{{$eticket[0]->vga_merk}} &nbsp;{{$eticket[0]->vga_tipe}}
+                &nbsp;{{$eticket[0]->vga_kapasitas}}</td>
+        </tr>
+        <tr>
+            <td width="120px">Processor</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->p_merk}} {{$eticket[0]->p_jenis}} {{$eticket[0]->p_tipe}}</td>
+            <td width="120px">LAN</td>
+            <td width="240px">:  &nbsp;{{$eticket[0]->eth_name}}&nbsp;{{$eticket[0]->eth_mac}}</td>
+        </tr>
+        <tr>
+            <td width="120px">RAM</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->r_tipe}}, {{$eticket[0]->r_kapasitas}}
+                GB,{{$eticket[0]->r_slot}} Channel</td>
+            <td width="120px">Wireless</td>
+            <td width="240px">: &nbsp;{{$eticket[0]->wireless_name}} &nbsp;{{$eticket[0]->wireless_mac}}</td>
+        </tr>
+    </table>
+    @else
+    <table border="" width="700px" class="table-1">
+        <tr>
+            <td width="120px">Fixed Asset Code</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->kode_fa}}</td>
+            <td width="120px">Purchase Date</td>
+            <td width="240px">: &nbsp;{{$eticket[0]->purc_date}}</td>
+        </tr>
+        <tr>
+            <td width="120px">Merk Printer</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->printer_merk}} {{$eticket[0]->printer_type}} </td>
+            <td width="120px">PPB</td>
+            <td width="240px">:  &nbsp;{{$eticket[0]->purc_ppb}}</td>
+        </tr>
+        <tr>
+            <td width="120px">Serial Number</td>
+            <td width="200px">: &nbsp;{{$eticket[0]->serial_number}} </td>
+            <td width="120px">Status Printer</td>
+            <td width="240px">:  &nbsp;{{$eticket[0]->status}}</td>
+        </tr>
+    </table>
+    
+    @endif
+    
     <br>
 
     <table border="0.2" width="700px" class="table-2">

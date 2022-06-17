@@ -73,7 +73,7 @@
                         @foreach($printer as $p => $data)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$data->fa_code}}</td>
+                            <td>{{$data->kode_fa}}</td>
                             <td>{{$data->printer_merk}}</td>
                             <td>{{$data->printer_type}}</td>
                             <td>{{$data->type}}</td>
@@ -126,7 +126,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label>FA Code</label>
-                        <input type="text" name="fa_code" class="form-control" placeholder="FA Code">
+                        <input type="text" name="kode_fa" class="form-control" placeholder="FA Code">
                     </div>
                     <div class="form-group">
                         <label>Purchase Date</label>
