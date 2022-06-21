@@ -2,11 +2,11 @@
 @section('title', 'Eticket | MyHelpdesk')
 @section('title-sub', 'Eticket')
 @section('breadcrumb')
-{{-- <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/">IT Asset</a></li>
-    <li class="breadcrumb-item ">Database</li>
-    <li class="breadcrumb-item active">Printer</li>
-</ol> --}}
+<ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="">Eticket</a></li>
+    <li class="breadcrumb-item active ">Admin</li>
+    {{-- <li class="breadcrumb-item active">Printer</li> --}}
+</ol>
 @endsection
 
 @section('content')

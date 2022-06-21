@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-@section('title', 'Search Eriwayat Computer | ITCS')
-@section('title-sub', 'Search Eriwayat Computer')
+@section('title', 'Search Eriwayat Computer | MY HELPDESK')
+@section('title-sub', 'Search Eriwayat')
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/">IT Asset</a></li>
-    <li class="breadcrumb-item ">E Riwayat</li>
+    <li class="breadcrumb-item"><a href="">Eticket</a></li>
+    <li class="breadcrumb-item ">ERiwayat</li>
     <li class="breadcrumb-item active">Search</li>
 </ol>
 @endsection

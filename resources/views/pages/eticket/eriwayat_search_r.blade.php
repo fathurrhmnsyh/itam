@@ -1,10 +1,11 @@
 @extends('layouts.admin')
-@section('title', 'Search Eriwayat | ITCS')
+@section('title', 'Search Eriwayat | MY HELPDESK')
 @section('title-sub', 'Search Eriwayat ')
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item ">E Riwayat</li>
-    <li class="breadcrumb-item active">Search</li>
+    <li class="breadcrumb-item"><a href="">Eticket</a></li>
+    <li class="breadcrumb-item ">ERiwayat</li>
+    <li class="breadcrumb-item active">Search result</li>
 </ol>
 @endsection
 

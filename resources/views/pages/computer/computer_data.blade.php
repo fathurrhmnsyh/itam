@@ -3,7 +3,7 @@
 @section('title-sub', 'Computer Data')
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/">IT Asset</a></li>
+    <li class="breadcrumb-item"><a href="">IT Asset</a></li>
     <li class="breadcrumb-item ">Database</li>
     <li class="breadcrumb-item active">Computer</li>
 </ol>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Dashboard | ITCS')
+@section('title', 'Dashboard | MY HELPDESK')
 @section('title-sub', 'Dashboard')
 {{-- @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -12,12 +12,13 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">
+            <h6 align="right">
                 <?php
                     $tgl=date('l, d-m-Y');
                     echo $tgl;
                 ?>
-            </h3>
+            </h6>
+            <h5 class="card-title">IT Asset Management</h5>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -89,6 +90,69 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+    <div class="card">
+      <div class="card-header">
+          <h5 class="card-title">Eticket</h5>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+          <!-- Info boxes -->
+      <div class="row">
+        <div id="chart-ticket"></div>
+      </div>
+      <!-- /.row -->
+
+      </div>
+      <!-- /.card-body -->
+  </div>
 </div>
 
 @endsection
+
+@push('page-script')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+  var total_case = <?php echo json_encode($total_case) ?>;
+  var bulan = <?php echo json_encode($bulan) ?>;
+  Highcharts.chart('chart-ticket', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Monthly Problem Tickets'
+    },
+    subtitle: {
+        text: 'IT Technical Support'
+    },
+    xAxis: {
+        categories:  bulan,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Case'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} case</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Services',
+        data: total_case,
+
+    }]
+});
+</script>
+@endpush
