@@ -48,12 +48,14 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/user_kom', 'UsedAssetController@user_kom');
     Route::get('/user_kom/detail/{id}', 'UsedAssetController@kom_detail');
     Route::post('/user_kom/store', 'UsedAssetController@store');
+    Route::get('/user_kom/delete{id}', 'UsedAssetController@delete');
     Route::get('/user_kom/print/{id}', 'UsedAssetController@print');
     
     //user_used_laptop
     Route::get('/user_laptop', 'UsedAssetController@user_lap');
     Route::get('/user_laptop/detail/{id}', 'UsedAssetController@lap_detail');
     Route::post('/user_laptop/store', 'UsedAssetController@store_lp');
+    Route::get('/user_laptop/delete{id}', 'UsedAssetController@delete_lp');
     Route::get('/user_laptop/print/{id}', 'UsedAssetController@print_lp');
 
 

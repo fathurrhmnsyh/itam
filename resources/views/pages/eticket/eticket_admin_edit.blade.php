@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="id_kode_fa" class="form-label">ID Kode FA</label>
-                        <select class="form-control" name="id_kode_fa" id="id_kode_fa">
+                        <select class="form-control js-example-basic-single" name="id_kode_fa" id="id_kode_fa">
                             <option value="{{$eticket->id_kode_fa}}" selected='selected'>{{$eticket->id_kode_fa}}</option>
                          
                         </select>
@@ -152,6 +152,11 @@
             });
     });
 
+</script>
+<script type="text/javascript">
+     $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
 </script>
 @endpush
 

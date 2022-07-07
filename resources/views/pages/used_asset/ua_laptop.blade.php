@@ -11,37 +11,6 @@
 
 @section('content')
 
-<div class="col-md-6 col-lg-4">
-    <br>
-    @if ($message = Session::get('sukses'))
-    <div class="alert alert-alt alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Success, <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-
-    @endif
-
-    @if ($message = Session::get('gagal'))
-    <div class="alert alert-alt alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-    @endif
-
-    @if ($message = Session::get('peringatan'))
-    <div class="alert alert-alt alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Ups, <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-    @endif
-</div>
-
 <div class="col-12">
     <div class="card">
         <!-- /.card-header -->
@@ -51,7 +20,7 @@
             <a href="/komputer/print_all" type="button" class="btn btn-success mb-3" target="_blank"><i
                     class="fa fa-print"></i> Print Data</a>
             <br><br>
-            <table class="table table-hover dataTable table-striped w-full" id="example1" data-plugin="dataTable">
+            <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -75,7 +44,7 @@
                             <a href="/user_laptop/detail/{{$ua->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                 Detail</a>
                             <a class="btn-sm btn-danger"
-                                onclick="return confirm('Data Yang Terhapus Tidak Bisa Dikembalikan!')" href=""> <i
+                                onclick="return confirm('Data Yang Terhapus Tidak Bisa Dikembalikan!')" href="user_laptop/delete{{$ua->id}}"> <i
                                     class="fa fa-trash"> Delete</i></a>
                             {{-- <a href="#myModal" class="trigger-btn btn-sm btn-danger " data-toggle="modal"> Delete</a> --}}
                         </td>

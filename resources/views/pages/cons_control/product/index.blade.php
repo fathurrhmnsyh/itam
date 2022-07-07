@@ -13,7 +13,7 @@
     <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-hover dataTable table-striped w-full" id="example1" data-plugin="dataTable">
+            <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">
                 <a href="#myModaladd" class="trigger-btn btn btn-success " data-toggle="modal"><i
                         class="fa fa-plus"></i> Add Data</a>
                 <br><br>

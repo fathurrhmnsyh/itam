@@ -50,6 +50,13 @@ class UsedAssetController extends Controller
 
         return redirect('/user_kom')->with('success', 'Data Add Successfully!');
     }
+    public function delete($id)
+    {
+        $used_asset = UsedAsset::find($id);
+        $used_asset->delete();
+
+        return redirect ('/user_kom')->with('success', 'Data RRemove Successfully!');
+    }
     public function print($id)
     {
         $used_asset = DB::table('used_asset')
@@ -102,7 +109,14 @@ class UsedAssetController extends Controller
             'employee_id' => $request->name
         ]);
 
-        return redirect('/user_kom');
+        return redirect('/user_laptop');
+    }
+    public function delete_lp($id)
+    {
+        $used_asset_laptop = UssedLaptop::find($id);
+        $used_asset_laptop->delete();
+
+        return redirect ('/user_laptop')->with('success', 'Data RRemove Successfully!');
     }
     public function print_lp($id)
     {

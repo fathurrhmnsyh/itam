@@ -61,15 +61,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/stok/out">
+                <form method="POST" class="row " action="/stok/out" id="dynamicAddRemove" >
                     {{ csrf_field() }}
                     <p align="right" style="font-size: 15px, margin-bottom: -10px">last no trans : <span style="color:red">{{ $last_stock->no_perm}}</span> </p>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label>Date</label>
                         <input type="hidden" name="input_by" class="form-control" value="{{auth()->user()->name}}">
                         <input type="date" name="date" class="form-control" placeholder="Date">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label for="exampleInputEmail1">Pilih Barang</label><br>
                         <select name="barang_id" class="js-example-basic-single" style="width: 100%">
                             <option value="">Open Select Menu</option>
@@ -78,17 +78,19 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="form-group">
+                    {{-- <div class="form-group col-md-3">
+                    <button style="margin-top: 35px;" type="button" name="add" id="add-btn-so" class="btn btn-success btn-sm">+ Add More</button>
+                    </div> --}}
+                    <div class="form-group col-md-12">
                         
                         <label>No Transaction</label>
                         <input type="text" name="no_perm" class="form-control" placeholder="No transaction">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" placeholder="Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label>Section</label>
                         <select class="form-control" name="section" type="text">
                             <option value="Accounting & Fin">Accounting & Fin</option>
@@ -105,7 +107,7 @@
                             <option value="QHSE">QHSE</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label>Jumlah</label>
                         <input type="text" name="jumlah" class="form-control" placeholder="Jumlah">
                     </div>
@@ -200,4 +202,5 @@
         });
     });
     </script>
+    
 @endpush

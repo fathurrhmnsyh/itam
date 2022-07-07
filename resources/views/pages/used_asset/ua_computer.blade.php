@@ -45,7 +45,7 @@
                             <a href="/user_kom/detail/{{$ua->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                 Detail</a>
                             <a class="btn-sm btn-danger"
-                                onclick="return confirm('Data Yang Terhapus Tidak Bisa Dikembalikan!')" href=""> <i
+                                onclick="return confirm('Data Yang Terhapus Tidak Bisa Dikembalikan!')" href="user_kom/delete{{$ua->id}}"> <i
                                     class="fa fa-trash"> Delete</i></a>
                             {{-- <a href="#myModal" class="trigger-btn btn-sm btn-danger " data-toggle="modal"> Delete</a> --}}
                         </td>
