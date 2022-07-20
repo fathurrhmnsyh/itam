@@ -109,14 +109,14 @@ class UsedAssetController extends Controller
             'employee_id' => $request->name
         ]);
 
-        return redirect('/user_laptop');
+        return redirect('/user_laptop')->with('success', 'Data Add Successfully!');
     }
     public function delete_lp($id)
     {
         $used_asset_laptop = UssedLaptop::find($id);
         $used_asset_laptop->delete();
 
-        return redirect ('/user_laptop')->with('success', 'Data RRemove Successfully!');
+        return redirect ('/user_laptop')->with('success', 'Data Remove Successfully!');
     }
     public function print_lp($id)
     {

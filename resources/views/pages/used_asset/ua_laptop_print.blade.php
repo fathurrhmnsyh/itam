@@ -88,6 +88,11 @@
             </td>
         </tr>
         <tr>
+            <td width="200px">SSD Drive</td>
+            <td>&nbsp;{{$used_asset->ssd_merk}},&nbsp;{{$used_asset->ssd_tipe}},&nbsp;{{$used_asset->ssd_kapasitas}} GB
+            </td>
+        </tr>
+        <tr>
             <td width="200px">Graphic Card</td>
             <td>&nbsp;{{$used_asset->vga_merk}}&nbsp;{{$used_asset->vga_tipe}}&nbsp;{{$used_asset->vga_kapasitas}}</td>
         </tr>

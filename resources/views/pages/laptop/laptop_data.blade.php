@@ -11,37 +11,6 @@
 
 @section('content')
 
-<div class="col-md-6 col-lg-4">
-    <br>
-    @if ($message = Session::get('sukses'))
-    <div class="alert alert-alt alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Success, <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-
-    @endif
-
-    @if ($message = Session::get('gagal'))
-    <div class="alert alert-alt alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-    @endif
-
-    @if ($message = Session::get('peringatan'))
-    <div class="alert alert-alt alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Ups, <a class="alert-link" href="javascript:void(0)">{{ $message }}</a>.
-    </div>
-    @endif
-</div>
-
 <div class="col-12">
     <div class="card">
         <!-- /.card-header -->

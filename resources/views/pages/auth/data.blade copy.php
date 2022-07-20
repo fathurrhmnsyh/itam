@@ -133,9 +133,6 @@
                             <option value="IT">IT</option>
                             <option value="GA">GA</option>
                             <option value="Manufacturing">Manufacturing</option>
-                            <option value="Inventory Manajemen">Inventory Manajemen</option>
-                            <option value="WIP">WIP</option>
-                            <option value="PPIC & Delv Control">PPIC & Delv Control</option>
                             <option value="Purchasing">Purchasing</option>
                             <option value="Marketing">marketing</option>
                         </select>

@@ -86,9 +86,10 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Used Laptop</h4>
+                <h4 class="modal-title">Add Used Laptop</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form class="row g-3" method="post" action="/user_laptop/store">
@@ -96,7 +97,7 @@
                     <div class="col-md-6">
                         <label for="p_jenis" class="form-label"><span style="color: red">*</span>Kode FA</label>
                         <br>
-                        <select name="id" class=" form-control" data-plugin="select2">
+                        <select name="id" class=" form-control select2" style="width: 100%;">
                             <option value=""></option>
                             @foreach($laptop as $lap)
                             <option value="{{$lap->id}}">{{$lap->kode_fa}}</option>
@@ -105,7 +106,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="name" class="form-label"><span style="color: red">*</span>Name</label>
-                        <select name="name" class="form-control" data-plugin="select2">
+                        <select name="name" class="form-control select2" style="width: 100%;">
                             <option value=""></option>
                             @foreach($employee as $ep)
                             <option value="{{$ep->id}}">{{$ep->name}}</option>

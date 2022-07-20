@@ -50,17 +50,20 @@
                     </div>
                     <div class="col-md-12">
                         <label for="serial_number" class="form-label">Problem Type</label>
-                        <select class="form-control" name="problem_type">
+                        <select class="form-control js-example-basic-single" name="problem_type">
                             <option value="{{$eticket->problem_type}}" selected='selected'>{{$eticket->problem_type}}</option>
+                            <option value="Email">Email</option>
+                            <option value="Heatsink">Heatsink</option>
+                            <option value="LAN">LAN</option>
+                            <option value="Mainboard">Mainboard</option>
+                            <option value="Monitor">Monitor</option>
                             <option value="Power Supply">Power Supply</option>
                             <option value="Printer">Printer</option>
                             <option value="RAM">RAM</option>
-                            <option value="Heatsink">Heatsink</option>
-                            <option value="Mainboard">Mainboard</option>
-                            <option value="Monitor">Monitor</option>
-                            <option value="LAN">LAN</option>
                             <option value="TBS">TBS</option>
                             <option value="TMS">TMS</option>
+                            <option value="VGA">VGA</option>
+                            <option value="HDMI">HDMI</option>
                         </select>
                     </div>
                     <div class="col-md-12">

@@ -131,9 +131,24 @@
                         disabled>
                 </div>
                 <div class="col-md-4">
-                    <label for="hd_kapasitas" class="form-label">Kapasitas Hardisk </label>
+                    <label for="hd_kapasitas" class="form-label">Kapasitas Hardisk (GB)</label>
                     <input type="text" name="hd_kapasitas" class="form-control" id="hd_kapasitas"
                         value="{{$used_asset->hd_kapasitas}}" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="ssd_merk" class="form-label">Merk SSD </label>
+                    <input type="text" name="ssd_merk" class="form-control" id="ssd_merk" value="{{$used_asset->ssd_merk}}"
+                        disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="ssd_tipe" class="form-label">Tipe SSD </label>
+                    <input type="text" name="ssd_tipe" class="form-control" id="ssd_tipe" value="{{$used_asset->ssd_tipe}}"
+                        disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="ssd_kapasitas" class="form-label">Kapasitas SSD (GB)</label>
+                    <input type="text" name="ssd_kapasitas" class="form-control" id="ssd_kapasitas"
+                        value="{{$used_asset->ssd_kapasitas}}" disabled>
                 </div>
                 <div class="col-md-4">
                     <label for="vga_merk" class="form-label">Merk VGA</label>

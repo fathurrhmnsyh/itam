@@ -60,8 +60,8 @@ class LaptopController extends Controller
             'optical_drive' => $request->optical_drive
         ]);
 
-        Session::flash('sukses','Data Add Succesfully');
-        return redirect('laptop');
+        
+        return redirect('laptop')->with('success', 'Data Add Successfully!');
     }
     public function detail($id)
     {
@@ -113,16 +113,15 @@ class LaptopController extends Controller
         $laptop->optical_drive = $request->optical_drive;
         $laptop->save();
 
-        Session::flash('sukses','Data Update Succesfully');
-        return redirect('/laptop');
+        
+        return redirect('/laptop')->with('success', 'Data Update Successfully!');
     }
     public function delete($id)
     {
         $laptop = Laptop::find($id);
         $laptop->delete();
 
-        Session::flash('gagal','Data Delete Succesfully');
-        return redirect ('/laptop');
+        return redirect ('/laptop')->with('success', 'Data Delete Successfully!');
     }
     public function print($id)
     {
