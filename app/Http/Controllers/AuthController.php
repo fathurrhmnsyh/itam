@@ -48,15 +48,7 @@ class AuthController extends Controller
 
     public function data()
     {
-        $employee = DB::table('employee')
-        ->join('tb_div', 'employee.division_id', '=', 'tb_div.id' )
-        ->join('tb_dept', 'employee.dept_id', '=', 'tb_dept.id' )
-        ->join('tb_section', 'employee.section_id', '=', 'tb_section.id' )
-        ->select('employee.*', 'tb_div.divisi', 'tb_dept.dept', 'tb_section.section')
-        ->orderBy('division_id', 'asc')
-        ->orderBy('dept_id', 'asc')
-        ->orderBy('nik', 'asc')
-        ->get();
+        
 
         $user = DB::table('user')
         ->get();
@@ -75,5 +67,21 @@ class AuthController extends Controller
         // Session::flash('gagal','Data Delete Success');
         return redirect('/userlog')->with('warning', 'Data Delete Successfully!');
     }
-    
+    public function srcnik(Request $request)
+    {
+        $employee = DB::table('employee')
+        ->join('tb_div', 'employee.division_id', '=', 'tb_div.id' )
+        ->join('tb_dept', 'employee.dept_id', '=', 'tb_dept.id' )
+        ->join('tb_section', 'employee.section_id', '=', 'tb_section.id' )
+        ->select('employee.*', 'tb_div.divisi', 'tb_dept.dept', 'tb_section.section')
+        ->orderBy('division_id', 'asc')
+        ->orderBy('dept_id', 'asc')
+        ->orderBy('nik', 'asc')
+        ->get();
+
+        if ($request->ajax()) {
+            return datatables()->of($employee)->make(true);
+        }
+        return view ('pages.auth.data');
+    }
 }

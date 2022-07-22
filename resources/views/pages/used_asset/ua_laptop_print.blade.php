@@ -76,7 +76,7 @@
         </tr>
         <tr>
             <td width="200px">Processor</td>
-            <td> &nbsp;{{$used_asset->p_merk}} {{$used_asset->p_tipe}} {{$used_asset->p_jenis}} </td>
+            <td> &nbsp;{{$used_asset->p_merk}} {{$used_asset->p_jenis}} {{$used_asset->p_tipe}} </td>
         </tr>
         <tr>
             <td width="200px">RAM</td>

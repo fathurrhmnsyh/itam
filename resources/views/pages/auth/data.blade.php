@@ -108,16 +108,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add Account</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form class="row g-3" method="post" action="/userlog/create">
                     {{csrf_field()}}
                     <div class="col-md-12 form-group">
-                        <label for="nik" class="form-label">NIK</label>
-                        <input type="text" name="nik" class="form-control" id="nik">
+                        <label for="name" class="form-label">NIK</label>
+                    </div>
+                    <div class="col-md-12 form-group input-group">
+                        {{-- <label for="nik" class="form-label">NIK</label><br> --}}
+                        <input type="text" name="nik" class="form-control" id="nik" placeholder="NIK">
+                        <span>
+                            <a data-toggle="modal" href="#myModal2" class="btn btn-primary"><i
+                                    class="fa fa-search"></i></a>
+
+                            </a>
+                        </span>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="name" class="form-label">Name</label>
@@ -163,6 +172,79 @@
         </div>
     </div>
 </div>
+<div class="modal fade rotate" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Search NIK</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="container"></div>
+            <div class="modal-body table-responsive">
+                <table id="src-nik" class="table table-bordered table-striped dataTable" id="table1" data-plugin="dataTable">
+                    <thead style="width: 100%">
+                        <th>No</th>
+                        <th>NIK</th>
+                        <th>Name</th>
+                        <th>Dept</th>
+                        <th>Section</th>
+                    </thead>
+                    
+                </table>
+            </div>
+            <div class="modal-footer"> <a href="#" data-dismiss="modal" class="btn">Close</a>
+                <a href="#" class="btn btn-primary">Save changes</a>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
+@push('page-script')
+<script>
+    $(function () {
+        $('#src-nik').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '/userlog/getsrcnik',
+            columns: [
+                {
+                    data: 'no',
+                    name: 'id',
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'dept',
+                    name: 'dept'
+                },
+                {
+                    data: 'section',
+                    name: 'section'
+                },
+            ],
+            order : [[1, 'asc']]
+        });
+    });
+    // $(document).ready(function(){
+    //     setTimeout(function() {
+    //         location.reload();
+    //     }, 10000);
+    // })
+    
+
+</script>
+@endpush
