@@ -138,9 +138,8 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     //user login
     Route::get('/userlog', 'AuthController@data');
     Route::post('/userlog/create', 'AuthController@create');
-    Route::post('/userlog/create', 'AuthController@create');
     Route::get('/userlog/getname', 'AuthController@getname');
-    Route::get('/userlog/getsrcnik', 'AuthController@srcnik');
+    Route::get('/userlog/delete/{id}', 'AuthController@delete');
 
     //Eticket
     Route::get('/eticket', 'EticketController@index');

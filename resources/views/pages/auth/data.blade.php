@@ -10,26 +10,6 @@
 
 @section('content')
 
-{{-- @if ($message = Session::get('sukses'))
-<div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-@endif
-
-@if ($message = Session::get('gagal'))
-<div class="alert alert-danger alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-@endif
-
-@if ($message = Session::get('peringatan'))
-<div class="alert alert-warning alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-@endif --}}
 
 <div class="col-12">
     <div class="card">
@@ -61,10 +41,10 @@
                         <td>{{$u->nik}}</td>
                         <td>{{$u->role}}</td>
                         <td>
-                            <a href="/user_kom/detail/{{$u->id}}" class="btn-sm btn-info"><i class="fa fa-bars"></i>
+                            <a href="" class="btn-sm btn-info"><i class="fa fa-bars"></i>
                                 Detail</a>
-                            <a class="btn-sm btn-danger"
-                                onclick="return confirm('Data Yang Terhapus Tidak Bisa Dikembalikan!')"
+                                <a class="btn-sm btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this item?')"
                                 href="/userlog/delete/{{$u->id}}"> <i class="fa fa-trash"> Delete</i></a>
                             {{-- <a href="#myModal" class="trigger-btn btn-sm btn-danger " data-toggle="modal"> Delete</a> --}}
                         </td>
@@ -120,9 +100,9 @@
                     </div>
                     <div class="col-md-12 form-group input-group">
                         {{-- <label for="nik" class="form-label">NIK</label><br> --}}
-                        <input type="text" name="nik" class="form-control" id="nik" placeholder="NIK">
+                        <input type="text" name="nik" class="form-control" id="nik" placeholder="NIK" readonly>
                         <span>
-                            <a data-toggle="modal" href="#myModal2" class="btn btn-primary"><i
+                            <a data-toggle="modal" href="#myModal2" class="btn btn-primary btn-flat"><i
                                     class="fa fa-search"></i></a>
 
                             </a>
@@ -130,24 +110,11 @@
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" readonly>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="section" class="form-label">Section</label>
-                        <select name="section" class="form-control">
-                            <option value="">Select</option>
-                            <option value="Accounting">Accounting</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="HRD">HRD</option>
-                            <option value="IT">IT</option>
-                            <option value="GA">GA</option>
-                            <option value="Manufacturing">Manufacturing</option>
-                            <option value="Inventory Manajemen">Inventory Manajemen</option>
-                            <option value="WIP">WIP</option>
-                            <option value="PPIC & Delv Control">PPIC & Delv Control</option>
-                            <option value="Purchasing">Purchasing</option>
-                            <option value="Marketing">marketing</option>
-                        </select>
+                        <input type="text" name="section" class="form-control" id="section" readonly>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="role" class="form-label"><span style="color: red">*</span>Role</label>
@@ -173,7 +140,7 @@
     </div>
 </div>
 <div class="modal fade rotate" id="myModal2">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Search NIK</h4>
@@ -183,21 +150,46 @@
             </div>
             <div class="container"></div>
             <div class="modal-body table-responsive">
-                <table id="src-nik" class="table table-bordered table-striped dataTable" id="table1" data-plugin="dataTable">
-                    <thead style="width: 100%">
-                        <th>No</th>
-                        <th>NIK</th>
-                        <th>Name</th>
-                        <th>Dept</th>
-                        <th>Section</th>
+                <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">No</th>
+                            <th style="width: 20%">NIK</th>
+                            <th style="width: 40%">Name</th>
+                            <th style="width: 20%">Dept</th>
+                            <th style="width: 10%">Section</th>
+                            <th style="width: 5% ">Action</th>
+                        </tr>
                     </thead>
-                    
+                    <tbody>
+                        <?php
+          $no = 1;
+          ?>
+                        @foreach($employee as $k)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$k->nik}}</td>
+                            <td>{{$k->name}}</td>
+                            <td>{{$k->dept}} </td>
+                            <td>{{$k->section}}</td>
+                            <td>
+                                <button class="btn-xs btn-info" id="select"
+                                data-nik="{{$k->nik}}"
+                                data-name="{{$k->name}}"
+                                data-section="{{$k->section}}"
+                                ><i class="fa fa-check"></i>
+                                    Select</button>
+                                
+
+
+                            </td>
+                        </tr>
+
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
-            <div class="modal-footer"> <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
 
-            </div>
         </div>
     </div>
 </div>
@@ -206,45 +198,16 @@
 @endsection
 @push('page-script')
 <script>
-    $(function () {
-        $('#src-nik').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '/userlog/getsrcnik',
-            columns: [
-                {
-                    data: 'no',
-                    name: 'id',
-                    render: function (data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                },
-                {
-                    data: 'nik',
-                    name: 'nik'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'dept',
-                    name: 'dept'
-                },
-                {
-                    data: 'section',
-                    name: 'section'
-                },
-            ],
-            order : [[1, 'asc']]
-        });
-    });
-    // $(document).ready(function(){
-    //     setTimeout(function() {
-    //         location.reload();
-    //     }, 10000);
-    // })
-    
-
+    $(document).ready(function(){
+        $(document).on('click', '#select', function(){
+            var nik = $(this).data('nik');
+            var name = $(this).data('name');
+            var section = $(this).data('section');
+            $('#nik').val(nik);
+            $('#name').val(name);
+            $('#section').val(section);
+            $('#myModal2').modal('hide');
+        })
+    })
 </script>
 @endpush
