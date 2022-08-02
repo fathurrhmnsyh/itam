@@ -11,8 +11,9 @@
     @include('includes.admin.style')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+        
         @include('includes.admin.navbar')
 
         @include('includes.admin.sidebar')

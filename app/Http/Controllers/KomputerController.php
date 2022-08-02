@@ -102,8 +102,7 @@ class KomputerController extends Controller
         $komputer->lan_mac = $request->lan_mac;
         $komputer->save();
 
-        Session::flash('sukses','Data Update Succesfully');
-        return redirect('/komputer');
+        return redirect('/komputer')->with('success', 'Data Update Successfully!');
     }
 
     public function delete($id)

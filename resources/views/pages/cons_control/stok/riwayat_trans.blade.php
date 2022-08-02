@@ -94,7 +94,14 @@
         $('#table-so').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '/stok/transaksi_riwayat_out',
+            ajax: {
+            'url':'{!!url("/stok/transaksi_riwayat_out")!!}',
+            'type': 'POST',
+            'headers': {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+            },
+            // ajax: '/stok/transaksi_riwayat_out',
             columns: [{
                     data: 'no',
                     name: 'id',

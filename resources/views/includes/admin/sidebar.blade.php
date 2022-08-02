@@ -216,7 +216,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                {{-- <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
@@ -274,12 +274,13 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 @endif
 
                 <li class="nav-header">E-TIKET</li>
                 <li
                     class="nav-item has-treeview {{request()->is('eticket*', 'eticket/admin','eticket/eriwayat', 'eriwayat/search','eriwayat/cari*') ? 'menu-open': ''}}">
+                   
                     <a href="#"
                         class="nav-link {{request()->is('eticket*', 'eticket/admin', 'eticket/eriwayat','eriwayat/search','eriwayat/cari*') ? 'active': ''}}">
                         <i class="nav-icon fas fa-ticket-alt "></i>
@@ -322,6 +323,16 @@
                         @endif
                     </ul>
                 </li>
+                {{-- <li class="nav-header">MESSENGER</li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon far fa-solid fa-comment-dots"></i>
+                        
+                        <p>
+                            Chat
+                        </p>
+                    </a>
+                </li> --}}
 
                 {{-- Kalo di tambah role admin --}}
                 @if (auth()->user()->role=="admin")

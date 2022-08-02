@@ -53,6 +53,7 @@
                         <select class="form-control js-example-basic-single" name="problem_type">
                             <option value="{{$eticket->problem_type}}" selected='selected'>{{$eticket->problem_type}}</option>
                             <option value="Email">Email</option>
+                            <option value="Fan">Fan</option>
                             <option value="Heatsink">Heatsink</option>
                             <option value="LAN">LAN</option>
                             <option value="Mainboard">Mainboard</option>

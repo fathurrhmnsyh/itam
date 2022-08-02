@@ -16,6 +16,10 @@ class AuthController extends Controller
     }
     public function postlogin(Request $request)
     {
+        $this->validate($request,[
+            'nik' => 'required',
+            'password' => 'required',
+        ]);
         if (Auth::attempt($request->only('nik', 'password'))) {
 
             if ($request->user()->role == 'user') {

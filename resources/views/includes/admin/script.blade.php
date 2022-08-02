@@ -6,6 +6,8 @@
 <script src="{{url('backend/dist/script/jquery.dataTables.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('backend/dist/js/adminlte.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{url('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('backend/dist/js/demo.js')}}"></script>
 <!-- Select2 -->

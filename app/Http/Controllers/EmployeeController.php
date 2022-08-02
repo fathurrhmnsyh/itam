@@ -17,8 +17,8 @@ class EmployeeController extends Controller
         ->join('tb_dept', 'employee.dept_id', '=', 'tb_dept.id' )
         ->join('tb_section', 'employee.section_id', '=', 'tb_section.id' )
         ->select('employee.*', 'tb_div.divisi', 'tb_dept.dept', 'tb_section.section')
-        ->orderBy('division_id', 'asc')
-        ->orderBy('dept_id', 'asc')
+        // ->orderBy('division_id', 'asc')
+        // ->orderBy('dept_id', 'asc')
         ->orderBy('nik', 'asc')
         ->get();
         
