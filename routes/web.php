@@ -69,6 +69,7 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/komputer/delete/{id}', 'KomputerController@delete');
     Route::get('/komputer/print/{id}', 'KomputerController@print');
     Route::get('/komputer/print_all', 'KomputerController@print_all');
+    Route::get('/komputer/export_excel', 'KomputerController@exportExcel');
 
     //Laptop
     Route::get('/laptop', 'LaptopController@index');

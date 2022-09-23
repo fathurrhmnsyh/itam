@@ -9,6 +9,9 @@ use DB;
 use Session;
 use Alert;
 
+use App\Exports\CompExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class KomputerController extends Controller
 {
     public function index()
@@ -129,5 +132,9 @@ class KomputerController extends Controller
         $pdf = PDF::loadview('pages/computer/computer_print_all', ['komputer' => $komputer]);
         $pdf->setPaper('A3', 'landscape');
         return $pdf->stream();
+    }
+    public function exportExcel()
+    {
+        return Excel::download(new compExport, 'comp.xlsx');
     }
 }

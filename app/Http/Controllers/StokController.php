@@ -24,7 +24,7 @@ class StokController extends Controller
         ->where('stok', '<=', 2)
         ->get();
         if ($request->ajax()) {
-            return datatables()->of($ambilDataStok)->make(true);
+            return datatables()->of($stok)->make(true);
         }
         
 

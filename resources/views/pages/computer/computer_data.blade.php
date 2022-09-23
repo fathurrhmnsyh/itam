@@ -19,6 +19,9 @@
             <a href="/komputer/print_all" type="button" class="btn btn-success mb-3" target="_blank"><i
                     class="fa fa-print"></i>
                 Print Data</a>
+            <a href="/komputer/export_excel" type="button" class="btn btn-success mb-3" target="_blank"><i
+                    class="fa fa-file"></i>
+                Export File</a>
 
             <br><br>
             <table class="table table-hover dataTable table-striped w-full" id="myTable" data-plugin="dataTable">

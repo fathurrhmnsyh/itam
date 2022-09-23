@@ -35,7 +35,7 @@
             <br>
             <p style="color: brown"><i>Copy FA Code then click print data </i></p>
 
-            <table id="table-eriwayat" class="table table-hover table-striped w-full">
+            <table id="table-eriwayat"  class="table table-hover table-striped w-full table-eriwayat">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -63,13 +63,13 @@
 @push('page-script')
 <script>
     $(function () {
-        $('#table-eriwayat').DataTable({
+        $('.table-eriwayat').DataTable({
             processing: true,
             serverSide: true,
             ajax: '/eticket/eriwayat',
             columns: [{
                     data: 'no',
-                    name: 'id',
+                    name: 'no',
                     render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }

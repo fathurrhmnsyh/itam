@@ -48,7 +48,7 @@ class PrinterController extends Controller
         ->where('printer.id', $id)
         ->first();
 
-        dd($printer);
+        // dd($printer);
     }
     public function delete($id)
     {
