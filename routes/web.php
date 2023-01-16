@@ -34,7 +34,7 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/asik', function(){
         return view('layouts/template');
     });
-    
+
     //User
 
     Route::get('/employee', 'EmployeeController@index');
@@ -44,13 +44,13 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/employee/delete/{id}', 'EmployeeController@delete');
 
     //user_used_komputer
-    
+
     Route::get('/user_kom', 'UsedAssetController@user_kom');
     Route::get('/user_kom/detail/{id}', 'UsedAssetController@kom_detail');
     Route::post('/user_kom/store', 'UsedAssetController@store');
     Route::get('/user_kom/delete{id}', 'UsedAssetController@delete');
     Route::get('/user_kom/print/{id}', 'UsedAssetController@print');
-    
+
     //user_used_laptop
     Route::get('/user_laptop', 'UsedAssetController@user_lap');
     Route::get('/user_laptop/detail/{id}', 'UsedAssetController@lap_detail');
@@ -119,6 +119,11 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
         Route::post('/stok/in', 'StokController@in');
         Route::post('/stok/transaksi_riwayat_out', 'StokController@history_out');
         Route::get('/stok/transaksi_riwayat_in', 'StokController@history_in');
+        Route::get('/stok/get_data_item', 'StokController@getdata')->name('stok.get_data_item');
+        Route::post('/stok/store_stin', 'StokController@storestin')->name('stok.store_stin');
+        Route::post('/stok/store_stout', 'StokController@storestout')->name('stok.store_stout');
+        Route::get('/stok/auto_number_perm', 'StokController@autoNumberPerm')->name('stok.auto_number_perm');
+
     ///End Consumable Control
 
 
@@ -128,7 +133,7 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/ekom/search', 'EriwayatController@search');
     Route::get('/ekom/cari', 'EriwayatController@search_result');
     Route::get('/ekom/print/{id_kom}', 'EriwayatController@print');
-    
+
     //Eriwayat Laptop
     Route::get('/elapt', 'EriwayatController@elapt');
     Route::post('/elapt/store', 'EriwayatController@elapt_store');
@@ -157,7 +162,7 @@ Route::group(['middleware' =>['auth', 'ceklevel:admin']], function(){
     Route::get('/eriwayat/search', 'EticketController@erw_search');
     Route::get('/eriwayat/cari', 'EticketController@search_result');
     Route::get('/eriwayat/print/{id_asset}/{id_kode_fa}', 'EticketController@print');
-   
+
 
 
 });

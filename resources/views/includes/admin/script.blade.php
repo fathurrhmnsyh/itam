@@ -12,6 +12,9 @@
 <script src="{{url('backend/dist/js/demo.js')}}"></script>
 <!-- Select2 -->
 <script src="{{url('backend/plugins/select2/js/select2.full.min.js')}}"></script>
+{{-- New --}}
+{{-- Seetalert --}}
+<script src="{{url('vendor/sweetalert/sweetalert2.all.min.js')}}"></script>
 
 <!-- page script -->
 <script>

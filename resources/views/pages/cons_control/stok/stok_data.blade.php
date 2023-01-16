@@ -10,15 +10,22 @@
 @endsection
 
 @section('content')
+@include('pages.cons_control.stok.stok-in.modal_stin')
+@include('pages.cons_control.stok.stok-in.modal_item_stin')
+@include('pages.cons_control.stok.stok-out.modal_stout')
 
 <div class="col-12">
     <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-            <button class="btn btn-success " data-toggle="modal" data-target="#myModalin"><i class="fa fa-plus"></i>
+            <!-- <button class="btn btn-success " data-toggle="modal" data-target="#myModalin"><i class="fa fa-plus"></i>
+                Stok In</button> -->
+            <button class="btn btn-primary " data-toggle="modal" data-target="#myModalstin"><i class="fa fa-plus"></i>
                 Stok In</button>
-            <button class="btn btn-danger " data-toggle="modal" data-target="#myModal"><i class="fa fa-minus"></i> Stok
-                Out</button>
+            <!-- <button class="btn btn-danger " data-toggle="modal" data-target="#myModal"><i class="fa fa-minus"></i> Stok
+                Out</button> -->
+            <button class="btn btn-danger " data-toggle="modal" id="btnstout"><i class="fa fa-minus"></i>
+                Stok Out</button>
             <br>
             <br>
             @if ($message = Session::get('stokAlert'))
@@ -43,7 +50,7 @@
                         <th>Stok</th>
                     </tr>
                 </thead>
-                
+
             </table>
         </div>
         <!-- /.card-body -->
@@ -82,7 +89,7 @@
                     <button style="margin-top: 35px;" type="button" name="add" id="add-btn-so" class="btn btn-success btn-sm">+ Add More</button>
                     </div> --}}
                     <div class="form-group col-md-12">
-                        
+
                         <label>No Transaction</label>
                         <input type="text" name="no_perm" class="form-control" placeholder="No transaction">
                     </div>
@@ -201,6 +208,17 @@
             $('.js-example-basic-single').select2();
         });
     });
+    $(document).ready(function(){
+        $("#btnstout").click(function(){
+            $("#myModalstout").modal('show');
+
+            var route ='{{ route("stok.auto_number_perm") }}';
+            $.get(route, function (data) {
+                document.getElementById('no_perm').value = data;
+                    // $('#setdate').focus();
+            });
+        });
+    });
     </script>
-    
+
 @endpush

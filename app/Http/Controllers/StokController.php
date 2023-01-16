@@ -10,6 +10,9 @@ use App\Stok_in;
 use DB;
 use Alert;
 use Session;
+use DataTables;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class StokController extends Controller
 {
@@ -23,14 +26,17 @@ class StokController extends Controller
         $ambilDataStok = DB::table('barang_stok')
         ->where('stok', '<=', 2)
         ->get();
+
+        $section = DB::table('tb_section')->get();
+
         if ($request->ajax()) {
             return datatables()->of($stok)->make(true);
         }
-        
+
 
         // dd($ambilDataStok);
         Session::flash('stokAlert');
-        return view('pages.cons_control.stok.stok_data', compact("stok", "kategori", "stok_out", "ambilDataStok", "last_stock"));
+        return view('pages.cons_control.stok.stok_data', compact("stok", "kategori", "stok_out", "ambilDataStok", "last_stock","section"));
     }
     public function out(Request $request)
     {
@@ -41,7 +47,7 @@ class StokController extends Controller
         $brg->stok -= $request->jumlah;
         $brg->save();
 
-        
+
         return redirect('/stok')->with('warning', 'Stock Out Successfully!');
     }
     public function history_out(Request $request)
@@ -51,9 +57,9 @@ class StokController extends Controller
         ->select('stok_out.*', 'barang_stok.barang_name')
         ->orderBy('id', 'desc')
         ->get();
-        
-                
-        
+
+
+
         if ($request->ajax()) {
             return datatables()->of($stok_out)->make(true);
         }
@@ -61,7 +67,7 @@ class StokController extends Controller
     }
     public function history_in(Request $request)
     {
-                
+
         $stok_in = DB::table('stok_in')
         ->join('barang_stok', 'stok_in.barang_id', '=', 'barang_stok.id')
         ->select('stok_in.*', 'barang_stok.barang_name')
@@ -81,9 +87,116 @@ class StokController extends Controller
         $brg = barang_stok::findOrFail($request->barang_id);
         $brg->stok += $request->jumlah;
         $brg->save();
-        
+
         return redirect('/stok')->with('success', 'Stock In Successfully!');
     }
+    public function getdata(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = DB::table('barang_stok')
+                    ->select('id','barang_name','barang_category')
+                    ->get();
+            return Datatables::of($data)->make(true);
+        }
+    }
+    public function storestin(Request $request)
+    {
 
-    
+            $date = $request->date;
+            $input_by = $request->input_by;
+            $no_ppb = $request->no_ppb;
+            $barang_name = $request->barang;
+            $jumlah = $request->jumlah;
+
+            if(count($request->input('barang')) > 0){
+                foreach($request->input('barang') as $item => $value){
+                    $data = array(
+                        'input_by' => $input_by,
+                        'date' => $date,
+                        'no_ppb' => $no_ppb,
+                        'barang_name' => $barang_name[$item],
+                        'jumlah' => $jumlah[$item]
+                    );
+                    $data2 = $data;
+                    // dd($data2);
+                    $get_data = Stok_in::create($data);
+
+                }
+                // dd($key);
+
+                // dd($oldstock);
+            }else {
+                return response()->json([
+                    'errors'=> $msg,
+                ]);
+             }
+             return response()->json([
+                'status' => 'Successfully Add'
+            ]);
+
+
+    }
+    public function storestout(Request $request)
+    {
+
+            $date = $request->date;
+            $input_by = $request->input_by;
+            $no_perm = $request->no_perm;
+            $name = $request->name;
+            $section = $request->section;
+            $barang_name = $request->barang;
+            $jumlah = $request->jumlah;
+
+            if(count($request->input('barang')) > 0){
+                foreach($request->input('barang') as $item => $value){
+                    $data = array(
+                        'input_by' => $input_by,
+                        'date' => $date,
+                        'no_perm' => $no_perm,
+                        'name' => $name,
+                        'section' => $section,
+                        'barang_name' => $barang_name[$item],
+                        'jumlah' => $jumlah[$item]
+                    );
+                    $data2 = $data;
+                    // dd($data2);
+                    $get_data = Stok_out::create($data);
+
+                }
+                // dd($key);
+
+                // dd($oldstock);
+            }else {
+                return response()->json([
+                    'errors'=> $msg,
+                ]);
+             }
+             return response()->json([
+                'status' => 'Successfully Add'
+            ]);
+
+
+    }
+    public function autoNumberPerm(Request $request)
+    {
+        $getYear = Carbon::now()->format('Y');
+        // 22
+        $getMonth = Carbon::now()->format('m');
+        $concatYnM = $getYear.$getMonth;
+
+        $lastNoPerm = DB::table('stok_out')->latest('id')->select('no_perm')->first();
+        $lastNoPerm1 = $lastNoPerm->no_perm;
+        $perm_no = substr($lastNoPerm1,-3);
+        $perm_noplus = (int)$perm_no + 1;
+        $permPlus = '0'.$perm_noplus;
+
+        // dd($lastNoPerm1);
+
+
+        // dd($permPlus);
+
+        $no_perm = $concatYnM.'-'.$permPlus;
+		return response()->json($no_perm);
+    }
+
 }
