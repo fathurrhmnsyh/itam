@@ -75,8 +75,8 @@
                             <div class="form-group">
                                 <label>Section</label>
                                     <select class="form-control select2" name="section" id="section" type="text" style="width: 100%;">
+                                        <option value="" selected="selected">-- Select Section --</option>
                                         @foreach($section as $section)
-                                        <option value=""></option>
                                         <option value="{{$section->section}}">{{$section->section}}</option>
                                          @endforeach</select>
                                     </select>
@@ -228,6 +228,7 @@
         $('#no_perm').val("");
         $('#name').val("");
         $('#section').val("");
+        // $('#section option[selected]').prop('selected', true);
         var table = $('#tbl-st-out').DataTable();
         table.rows().remove().draw();
 

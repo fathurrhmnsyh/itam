@@ -51,6 +51,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <!-- <th>Barang ID</th> -->
                         <th>Nama Barang</th>
                         <th>Jumlah</th>
                         <th>Nama Pengambil</th>
@@ -109,6 +110,10 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
+                // {
+                //     data: 'barang_id',
+                //     name: 'barang_id'
+                // },
                 {
                     data: 'barang_name',
                     name: 'barang_name'
@@ -172,7 +177,7 @@
     //         location.reload();
     //     }, 10000);
     // })
-    
+
 
 </script>
 @endpush

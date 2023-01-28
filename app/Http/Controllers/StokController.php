@@ -52,11 +52,12 @@ class StokController extends Controller
     }
     public function history_out(Request $request)
     {
-        $stok_out = DB::table('stok_out')
-        ->join('barang_stok', 'stok_out.barang_id', '=', 'barang_stok.id')
-        ->select('stok_out.*', 'barang_stok.barang_name')
-        ->orderBy('id', 'desc')
-        ->get();
+        // $stok_out = DB::table('stok_out')
+        // ->join('barang_stok', 'stok_out.barang_id', '=', 'barang_stok.id')
+        // ->select('stok_out.*', 'barang_stok.barang_name')
+        // ->orderBy('id', 'desc')
+        // ->get();
+        $stok_out = DB::table('stok_out')->get();
 
 
 
@@ -68,11 +69,13 @@ class StokController extends Controller
     public function history_in(Request $request)
     {
 
-        $stok_in = DB::table('stok_in')
-        ->join('barang_stok', 'stok_in.barang_id', '=', 'barang_stok.id')
-        ->select('stok_in.*', 'barang_stok.barang_name')
-        ->orderBy('id', 'desc')
-        ->get();
+        // $stok_in = DB::table('stok_in')
+        // ->join('barang_stok', 'stok_in.barang_id', '=', 'barang_stok.id')
+        // ->select('stok_in.*', 'barang_stok.barang_name')
+        // ->orderBy('id', 'desc')
+        // ->get();
+
+        $stok_in = DB::table('stok_in')->get();
 
         if ($request->ajax()) {
             return datatables()->of($stok_in)->make(true);
@@ -182,6 +185,7 @@ class StokController extends Controller
         $getYear = Carbon::now()->format('Y');
         // 22
         $getMonth = Carbon::now()->format('m');
+        $getDay = Carbon::now()->format('d');
         $concatYnM = $getYear.$getMonth;
 
         $lastNoPerm = DB::table('stok_out')->latest('id')->select('no_perm')->first();
@@ -194,6 +198,12 @@ class StokController extends Controller
 
 
         // dd($permPlus);
+        // if ($getDay != 1) {
+        //     $no_perm = $concatYnM.'-'.$permPlus;
+        // }else{
+        //     $no_perm = $concatYnM.'-'.'01';
+        // }
+
 
         $no_perm = $concatYnM.'-'.$permPlus;
 		return response()->json($no_perm);
